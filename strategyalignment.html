@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Element Residence Bali | Meta Ads Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0f0f1a;
+  --bg-secondary: #1a1a2e;
+  --bg-card: #16162a;
+  --bg-card-hover: #1e1e3a;
+  --border: rgba(255,255,255,0.06);
+  --accent-green: #00d9a5;
+  --accent-green-dim: rgba(0, 217, 165, 0.15);
+  --accent-purple: #8b5cf6;
+  --accent-purple-dim: rgba(139, 92, 246, 0.15);
+  --accent-red: #ef4444;
+  --accent-amber: #f59e0b;
+  --accent-blue: #3b82f6;
+  --accent-gold: #A69070;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b8;
+  --text-muted: #6b6b80;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 15px;
+}
+.slide {
+  min-height: 100vh;
+  padding: 48px 64px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+}
+.slide-number {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.slide-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-green);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.slide-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+.subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+.cover {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 80%, rgba(0, 217, 165, 0.05) 0%, transparent 40%);
+}
+.cover h1 { font-size: 56px; }
+.cover .meta {
+  margin-top: 48px;
+  display: flex;
+  gap: 48px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cover .meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.metric-card.green { border-top: 3px solid var(--accent-green); }
+.metric-card.red { border-top: 3px solid var(--accent-red); }
+.metric-card.amber { border-top: 3px solid var(--accent-amber); }
+.metric-card.purple { border-top: 3px solid var(--accent-purple); }
+.metric-card.gold { border-top: 3px solid var(--accent-gold); }
+.metric-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.metric-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.metric-sub {
+  font-size: 12px;
+  margin-top: 8px;
+  color: var(--text-muted);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.data-table th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+.data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+.data-table tr:hover td { background: var(--bg-card-hover); }
+.good { color: var(--accent-green); font-weight: 600; }
+.bad { color: var(--accent-red); font-weight: 600; }
+.warn { color: var(--accent-amber); font-weight: 600; }
+.neutral { color: var(--text-secondary); }
+.insight-box {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-green);
+  padding: 20px 24px;
+  margin: 20px 0;
+  border-radius: 0 12px 12px 0;
+}
+.insight-box.purple { border-left-color: var(--accent-purple); }
+.insight-box.red { border-left-color: var(--accent-red); }
+.insight-box.amber { border-left-color: var(--accent-amber); }
+.insight-box.gold { border-left-color: var(--accent-gold); }
+.insight-box p { margin-bottom: 0; }
+.insight-box p + p { margin-top: 12px; }
+.insight-box strong { color: var(--text-primary); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.timeline {
+  position: relative;
+  padding-left: 32px;
+  margin: 24px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-purple), var(--accent-green));
+  border-radius: 1px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 28px;
+  padding-left: 16px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  border: 2px solid var(--bg-primary);
+}
+.timeline-item.purple::before { background: var(--accent-purple); }
+.timeline-item.amber::before { background: var(--accent-amber); }
+.timeline-item.gold::before { background: var(--accent-gold); }
+.timeline-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent-green);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.timeline-item.purple .timeline-label { color: var(--accent-purple); }
+.timeline-item.amber .timeline-label { color: var(--accent-amber); }
+.timeline-item.gold .timeline-label { color: var(--accent-gold); }
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+.funnel-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.funnel-step .step-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  width: 200px;
+  flex-shrink: 0;
+}
+.funnel-step .step-value {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  width: 100px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.funnel-step .step-rate {
+  font-size: 13px;
+  font-weight: 600;
+  width: 120px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.funnel-step .step-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.funnel-step .step-bar-fill { height: 100%; border-radius: 4px; }
+.tag-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.tag-pill.green { background: var(--accent-green-dim); color: var(--accent-green); }
+.tag-pill.purple { background: var(--accent-purple-dim); color: var(--accent-purple); }
+.tag-pill.amber { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.tag-pill.red { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+@media print { .slide { page-break-after: always; } }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 4px; }
+@media (max-width: 768px) {
+  .slide { padding: 40px 24px; }
+  h1 { font-size: 36px; }
+  .slide-title { font-size: 28px; }
+  .two-col, .three-col { grid-template-columns: 1fr; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: COVER -->
+<section class="slide cover">
+  <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Heath Media" style="width: 180px; margin-bottom: 48px; opacity: 0.9;">
+  <div class="slide-tag">Meta Ads Launch Strategy</div>
+  <h1>Element Residence Bali</h1>
+  <p class="subtitle">Paid Social Acquisition Strategy, Funnel Architecture and Go-To-Market Plan for High-Ticket Bali Real Estate Investment Sales</p>
+  <div class="meta">
+    <span>February 2026</span>
+    <span>AOV: $250,000 USD</span>
+    <span>Target: Sell Out in 8–9 Months</span>
+    <span>Platform: Meta (Facebook + Instagram)</span>
+  </div>
+</section>
+
+<!-- SLIDE 2: EXECUTIVE SUMMARY -->
+<section class="slide">
+  <span class="slide-number">02 / 15</span>
+  <div class="slide-tag">Executive Summary</div>
+  <h1 class="slide-title">The Strategic Overview</h1>
+
+  <div class="metrics-grid">
+    <div class="metric-card gold">
+      <div class="metric-label">Average Unit Value</div>
+      <div class="metric-value">$250K</div>
+      <div class="metric-sub">Per investment unit</div>
+    </div>
+    <div class="metric-card green">
+      <div class="metric-label">Core Offer</div>
+      <div class="metric-value">10% ROI</div>
+      <div class="metric-sub">Net guarantee, fixed 5 years</div>
+    </div>
+    <div class="metric-card purple">
+      <div class="metric-label">Sales Timeline</div>
+      <div class="metric-value">8–9 Mo</div>
+      <div class="metric-sub">Full project sellout target</div>
+    </div>
+    <div class="metric-card amber">
+      <div class="metric-label">Current Marketing</div>
+      <div class="metric-value">Zero</div>
+      <div class="metric-sub">No paid ads running to date</div>
+    </div>
+  </div>
+
+  <p>Element Residence Bali is a premium investment real estate project in Canggu offering fully managed units with a contractual 10% net ROI guarantee fixed for five years. Construction began in late January 2026. The project has no established paid media history, no pixel data, and no conversion benchmarks. This is a ground-up launch.</p>
+
+  <p>The $250,000 average order value fundamentally changes the paid media playbook. This is not an e-commerce impulse purchase. The buyer journey will involve multiple touchpoints over weeks or months, culminating in a strategy call booking via Calendly and a high-touch sales conversation. Every element of the Meta Ads strategy must be built to generate trust, handle objections, qualify intent, and drive call bookings, not direct purchases.</p>
+
+  <p>The competitive landscape in Bali real estate paid social is fragmented. Named competitors including Elle Resort, Finns Bali Resort, Magnum Resort Berawa, and Alex Villas Laguna Complex are primarily organic or referral driven. The paid social space for premium Bali investment property is wide open. First-mover advantage in a structured Meta Ads operation is significant.</p>
+
+  <div class="insight-box purple">
+    <p><strong>The single most important metric for this account will be Cost Per Qualified Call Booked.</strong> Not CPM, not CPC, not even cost per lead. Every upstream metric exists to serve this one number. A qualified call booked through Calendly from a serious investor with budget authority is the only event that directly connects ad spend to revenue.</p>
+  </div>
+</section>
+
+<!-- SLIDE 3: IDEAL CUSTOMER PROFILE -->
+<section class="slide">
+  <span class="slide-number">03 / 15</span>
+  <div class="slide-tag">Ideal Customer Profile</div>
+  <h1 class="slide-title">Who We Are Targeting</h1>
+
+  <div class="two-col">
+    <div>
+      <h2>Primary ICP: International Passive Income Investor</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Attribute</th><th>Profile</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Age</td><td>30–55 years old</td></tr>
+          <tr><td>Gender Skew</td><td>Male-dominant (65–70%), with female investors growing</td></tr>
+          <tr><td>Income</td><td>$150K+ household income or existing investment portfolio</td></tr>
+          <tr><td>Geography</td><td>Nordics, UK, DACH (Germany/Austria/Switzerland), Australia, Singapore, UAE, Netherlands</td></tr>
+          <tr><td>Life Stage</td><td>Mid-career professionals, business owners, portfolio diversifiers, early retirees</td></tr>
+          <tr><td>Digital Behaviour</td><td>Active on Instagram and Facebook. Consumes content on travel, investing, lifestyle design, expat living</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box gold">
+        <p><strong>The Bali connection is aspirational, not transactional.</strong> These buyers are not just seeking yield. They want an asset they can use personally, in a location they already idealise. The creative must sell both the financial logic and the lifestyle simultaneously. Pure ROI messaging will attract tyre-kickers. Pure lifestyle messaging will attract dreamers. The winning angle is the intersection.</p>
+      </div>
+    </div>
+    <div>
+      <h2>Trigger Events That Create Buyers</h2>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Business Exit / Liquidity Event</h4>
+        <p>Recent sale of a business, equity vesting, or inheritance. Capital seeking deployment into tangible, income-generating assets.</p>
+      </div>
+      <div class="insight-box purple">
+        <h4 style="color: var(--accent-purple); margin-bottom: 8px;">Portfolio Diversification</h4>
+        <p>Existing property investors looking for international exposure. Frustrated with low yields in home markets (Nordic/UK/Australian property at 2–4% net yields vs Element's 10%).</p>
+      </div>
+      <div class="insight-box amber">
+        <h4 style="color: var(--accent-amber); margin-bottom: 8px;">Lifestyle Relocation Planning</h4>
+        <p>Professionals planning a "Plan B" location. Bali as a future base with an asset that pays for itself while they decide.</p>
+      </div>
+      <div class="insight-box gold">
+        <h4 style="color: var(--accent-gold); margin-bottom: 8px;">Retirement Income Planning</h4>
+        <p>45–55 year olds building passive income streams. The 10% guaranteed return with full management removes the complexity that stops most people from investing overseas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: OBJECTION MAP -->
+<section class="slide">
+  <span class="slide-number">04 / 15</span>
+  <div class="slide-tag">Objection Architecture</div>
+  <h1 class="slide-title">The Five Beliefs We Must Shift</h1>
+
+  <p style="margin-bottom: 24px;">Every piece of ad creative, every landing page section, and every retargeting touchpoint exists to move a prospect through these belief shifts. The buyer does not need to be convinced that Bali is beautiful. They need to be convinced that this specific investment is safe, real, and worth $250,000 of their capital.</p>
+
+  <div class="two-col">
+    <div>
+      <div class="insight-box red">
+        <h4 style="color: var(--accent-red); margin-bottom: 8px;">Objection 1: "Guaranteed ROI? Sounds Too Good to Be True"</h4>
+        <p><strong>Current Belief:</strong> Any investment promising guaranteed returns is either a scam or has hidden conditions that make the guarantee worthless.</p>
+        <p><strong>Required Shift:</strong> The 10% net ROI is contractually guaranteed and legally enforceable. Here is exactly how the structure works, who manages the property, and what happens if occupancy falls below projections.</p>
+        <p><strong>Creative Approach:</strong> Founder-led explainer video walking through the guarantee structure. Document-level transparency. Legal framework breakdown.</p>
+      </div>
+      <div class="insight-box red">
+        <h4 style="color: var(--accent-red); margin-bottom: 8px;">Objection 2: "I Don't Trust Overseas Developers"</h4>
+        <p><strong>Current Belief:</strong> Foreign property development is full of stories about projects that never got finished, developers who disappeared, and investors who lost everything.</p>
+        <p><strong>Required Shift:</strong> Richard and Oliver are real people, on the ground, with construction already underway. Here is the site, here is the progress, here is the team.</p>
+        <p><strong>Creative Approach:</strong> Weekly construction update videos. Founder walkthroughs on-site. Behind-the-scenes content showing real progress and real faces.</p>
+      </div>
+      <div class="insight-box amber">
+        <h4 style="color: var(--accent-amber); margin-bottom: 8px;">Objection 3: "Bali Property Law Is Confusing"</h4>
+        <p><strong>Current Belief:</strong> Foreigners cannot own property in Indonesia. The legal framework is opaque and risky.</p>
+        <p><strong>Required Shift:</strong> The leasehold structure is well-established, legally sound, and used by thousands of international investors. Element handles all legal complexity end to end.</p>
+        <p><strong>Creative Approach:</strong> Educational carousel ads breaking down the legal structure. FAQ-style video content. Testimonials from international investors who have navigated it.</p>
+      </div>
+    </div>
+    <div>
+      <div class="insight-box amber">
+        <h4 style="color: var(--accent-amber); margin-bottom: 8px;">Objection 4: "I Can't Manage a Property From Abroad"</h4>
+        <p><strong>Current Belief:</strong> Owning property overseas means dealing with tenants, maintenance, local issues, and time zone headaches. It is more hassle than it is worth.</p>
+        <p><strong>Required Shift:</strong> Element is fully managed. The investor does nothing except receive monthly income. Property management, guest operations, maintenance, and reporting are all handled by the on-site team.</p>
+        <p><strong>Creative Approach:</strong> "What your Tuesday looks like as an Element investor" lifestyle content. Show the passive income hitting while the investor lives their normal life elsewhere.</p>
+      </div>
+      <div class="insight-box purple">
+        <h4 style="color: var(--accent-purple); margin-bottom: 8px;">Objection 5: "$250K Is a Lot — I Need Proof"</h4>
+        <p><strong>Current Belief:</strong> This is a significant capital commitment. Without seeing other people who have invested and are happy, the risk feels too high.</p>
+        <p><strong>Required Shift:</strong> Smart, successful investors are already in. Here are their stories, their reasoning, and their results. You are not the first. You are joining a cohort of sophisticated buyers.</p>
+        <p><strong>Creative Approach:</strong> Investor testimonial videos. Case study carousels showing the numbers. Early buyer stories explaining their decision process. Social proof at every funnel stage.</p>
+      </div>
+
+      <div class="insight-box" style="margin-top: 32px;">
+        <p><strong>These five objections map directly to the creative testing matrix.</strong> Each initial ad concept is designed to shift one or more of these beliefs. The first 2 to 3 weeks of campaign activity will reveal which objections are the strongest barriers for the paid traffic audience, allowing us to double down on the angles that move the needle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: CREATIVE STRATEGY -->
+<section class="slide">
+  <span class="slide-number">05 / 15</span>
+  <div class="slide-tag">Creative Strategy</div>
+  <h1 class="slide-title">The Ads That Will Drive Sales</h1>
+
+  <p style="margin-bottom: 24px;">At $250K AOV, creative is not about grabbing attention for a quick conversion. It is about building enough trust and desire in 15 to 60 seconds that a high-net-worth individual decides this is worth a strategy call. Every concept is engineered to shift a specific belief from the objection map.</p>
+
+  <h2>Launch Creative Matrix (5 Core Concepts)</h2>
+  <table class="data-table">
+    <thead>
+      <tr><th>Concept</th><th>Format</th><th>Hook</th><th>Belief Shift</th><th>Funnel Stage</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>The ROI Breakdown</strong></td>
+        <td>Founder-led video (60–90s)</td>
+        <td>"10% net ROI, guaranteed for 5 years. Here's exactly how."</td>
+        <td class="good">Trust in guarantee</td>
+        <td>Cold — Awareness</td>
+      </tr>
+      <tr>
+        <td><strong>The Site Walk</strong></td>
+        <td>Founder on-camera (45–60s)</td>
+        <td>Richard/Oliver walking the construction site, showing real progress</td>
+        <td class="good">Developer trust</td>
+        <td>Cold — Awareness</td>
+      </tr>
+      <tr>
+        <td><strong>Your Investment, Your Escape</strong></td>
+        <td>Cinematic B-roll + text overlay</td>
+        <td>Drone footage of Canggu + renders + financial overlay</td>
+        <td class="good">Lifestyle + returns</td>
+        <td>Cold — Consideration</td>
+      </tr>
+      <tr>
+        <td><strong>Investor Testimonial</strong></td>
+        <td>UGC-style testimonial (60s)</td>
+        <td>Early buyer explaining why they invested and their confidence level</td>
+        <td class="good">Social proof</td>
+        <td>Warm — Retargeting</td>
+      </tr>
+      <tr>
+        <td><strong>Units Remaining</strong></td>
+        <td>Static carousel + video</td>
+        <td>Construction progress photos + "X units left" counter</td>
+        <td class="warn">Urgency / scarcity</td>
+        <td>Hot — Conversion</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="two-col" style="margin-top: 24px;">
+    <div>
+      <h3>Format Priorities</h3>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Founder-Led Video (Highest Priority)</h4>
+        <p>Richard and Oliver on camera are the single most important creative asset. For a $250K purchase, buyers need to see the humans behind the project. Polished but authentic. On-site footage. Direct to camera. This is the trust engine.</p>
+      </div>
+      <div class="insight-box purple">
+        <h4 style="color: var(--accent-purple); margin-bottom: 8px;">Cinematic Lifestyle Reels</h4>
+        <p>Drone footage of Canggu, the beach, the surrounding area. Combined with architectural renders and financial data overlays. These sell the aspiration. Instagram and Facebook feed placements. 15-second cuts for Stories and Reels, 45-second cuts for feed.</p>
+      </div>
+      <div class="insight-box amber">
+        <h4 style="color: var(--accent-amber); margin-bottom: 8px;">Static Carousels</h4>
+        <p>ROI comparison vs home market yields. Unit walkthrough renders. Investment structure breakdown. These are the "save and come back later" assets that perform well in retargeting.</p>
+      </div>
+    </div>
+    <div>
+      <h3>Testing Framework</h3>
+      <p>We will launch with 3 to 5 concepts simultaneously, each with 2 to 3 hook variations. The first two weeks are pure learning phase: we are buying data about which belief shifts resonate with the paid audience.</p>
+
+      <div class="insight-box">
+        <p><strong>Week 1–2:</strong> Launch all 5 concepts. Broad testing. Measure cost per ThruPlay, cost per landing page view, and cost per Calendly click. Kill underperformers at the ad level, not the concept level.</p>
+      </div>
+      <div class="insight-box">
+        <p><strong>Week 3–4:</strong> Double budget on winning concepts. Introduce hook variations on the top 2 performers. Begin retargeting creative production based on which objections cold traffic responds to most.</p>
+      </div>
+      <div class="insight-box">
+        <p><strong>Week 5+:</strong> Iterate weekly. Fresh creative every 7 to 10 days on winning angles. Retire fatigued ads before they degrade performance. Build a content production rhythm with the team in Bali.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: CAMPAIGN ARCHITECTURE -->
+<section class="slide">
+  <span class="slide-number">06 / 15</span>
+  <div class="slide-tag">Campaign Architecture</div>
+  <h1 class="slide-title">The Full Funnel Structure</h1>
+
+  <p style="margin-bottom: 24px;">The campaign structure mirrors the high-ticket buyer journey: awareness to consideration to conversion. Each stage has a distinct objective, audience definition, optimisation event, and creative strategy. Budget allocation shifts as the pixel matures and retargeting pools grow.</p>
+
+  <h2>Campaign Structure Overview</h2>
+  <table class="data-table">
+    <thead>
+      <tr><th>Campaign</th><th>Objective</th><th>Audience</th><th>Optimisation</th><th>Budget Split</th><th>KPI</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>COLD — Awareness</strong></td>
+        <td>Traffic / Video Views</td>
+        <td>Broad + Interest stacks (real estate, passive income, Bali, expat, investing)</td>
+        <td>Landing Page Views</td>
+        <td class="warn">50–60%</td>
+        <td>Cost per LPV, ThruPlay rate</td>
+      </tr>
+      <tr>
+        <td><strong>COLD — Consideration</strong></td>
+        <td>Conversions</td>
+        <td>Broad with creative doing the filtering. High-income signals in copy and visuals</td>
+        <td>Calendly Click / Lead Event</td>
+        <td class="warn">20–25%</td>
+        <td>Cost per Calendly click</td>
+      </tr>
+      <tr>
+        <td><strong>WARM — Retargeting</strong></td>
+        <td>Conversions</td>
+        <td>Video viewers (25%+, 50%+, 75%+), website visitors (7 days, 30 days), page engagers</td>
+        <td>Calendly Click / Lead Event</td>
+        <td class="good">15–20%</td>
+        <td>Cost per call booked</td>
+      </tr>
+      <tr>
+        <td><strong>HOT — Conversion</strong></td>
+        <td>Conversions</td>
+        <td>Calendly page visitors who did not book, engaged website visitors (3+ pages), email list</td>
+        <td>Lead Event / Call Booked</td>
+        <td class="good">5–10%</td>
+        <td>Cost per qualified call</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="two-col" style="margin-top: 24px;">
+    <div>
+      <h3>Cold Traffic Targeting</h3>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Broad + Creative Filtering (Primary)</h4>
+        <p>Meta's algorithm in 2026 is most effective when given broad audiences and allowed to optimise using strong creative signals. The $250K price point naturally filters the audience: people who are not serious will not click through to a luxury real estate landing page. Let the creative do the qualification.</p>
+      </div>
+      <div class="insight-box purple">
+        <h4 style="color: var(--accent-purple); margin-bottom: 8px;">Interest Stack Testing (Secondary)</h4>
+        <p>Layer interests to test signal quality: Real estate investing + Bali travel. Passive income + Luxury lifestyle. Expat communities in target geos. Property investment + High-net-worth publications (Financial Times, Bloomberg, Business Insider). These stacks will be tested against broad to see if they improve lead quality.</p>
+      </div>
+    </div>
+    <div>
+      <h3>Geo Targeting Priority</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Tier</th><th>Markets</th><th>Rationale</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="good">Tier 1</td><td>UK, Germany, Australia, Netherlands</td><td>Established Bali investor corridors, English/Euro-friendly, high purchasing power</td></tr>
+          <tr><td class="warn">Tier 2</td><td>Sweden, Norway, Denmark, Finland</td><td>High disposable income, strong Bali tourism demand, Ahti's Estonian network</td></tr>
+          <tr><td class="neutral">Tier 3</td><td>Singapore, UAE, Switzerland, Austria</td><td>High-net-worth hubs, test after Tier 1 and 2 data</td></tr>
+        </tbody>
+      </table>
+      <div class="insight-box amber">
+        <p><strong>Language matters.</strong> Tier 1 markets can be served in English. Tier 2 Nordic markets may benefit from localised copy in Swedish, Norwegian, and Danish to increase relevance scores and reduce CPMs. We will test English-first across all markets, then introduce localised variants for the highest-volume geos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: FUNNEL ARCHITECTURE -->
+<section class="slide">
+  <span class="slide-number">07 / 15</span>
+  <div class="slide-tag">Funnel Architecture</div>
+  <h1 class="slide-title">The Path From Ad Click to Sale</h1>
+
+  <p style="margin-bottom: 24px;">A $250K sale does not happen in one session. The funnel must be built to nurture intent across multiple touchpoints over days or weeks. Each stage has a single job: move the prospect to the next step.</p>
+
+  <div style="margin-bottom: 32px;">
+    <div class="funnel-step">
+      <div class="step-name">Ad Impression</div>
+      <div class="step-value" style="color: var(--accent-purple);">100%</div>
+      <div class="step-bar"><div class="step-bar-fill" style="width:100%; background: linear-gradient(to right, var(--accent-purple), var(--accent-green));"></div></div>
+      <div class="step-rate neutral">Top of funnel reach</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-name">Ad Click / ThruPlay</div>
+      <div class="step-value" style="color: var(--accent-purple);">1–3%</div>
+      <div class="step-bar"><div class="step-bar-fill" style="width:30%; background: var(--accent-purple);"></div></div>
+      <div class="step-rate neutral">CTR benchmark for real estate</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-name">Landing Page View</div>
+      <div class="step-value" style="color: var(--accent-blue);">70–80%</div>
+      <div class="step-bar"><div class="step-bar-fill" style="width:24%; background: var(--accent-blue);"></div></div>
+      <div class="step-rate neutral">Of clickers who load page</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-name">Engaged Visitor</div>
+      <div class="step-value" style="color: var(--accent-amber);">30–40%</div>
+      <div class="step-bar"><div class="step-bar-fill" style="width:12%; background: var(--accent-amber);"></div></div>
+      <div class="step-rate neutral">Scroll depth + time on page</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-name">Calendly Click</div>
+      <div class="step-value" style="color: var(--accent-green);">5–10%</div>
+      <div class="step-bar"><div class="step-bar-fill" style="width:5%; background: var(--accent-green);"></div></div>
+      <div class="step-rate neutral">Of landing page viewers</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-name">Call Booked</div>
+      <div class="step-value" style="color: var(--accent-green);">40–60%</div>
+      <div class="step-bar"><div class="step-bar-fill" style="width:3%; background: var(--accent-green);"></div></div>
+      <div class="step-rate good">Of Calendly visitors</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-name">Call Attended</div>
+      <div class="step-value" style="color: var(--accent-green);">60–75%</div>
+      <div class="step-bar"><div class="step-bar-fill" style="width:2%; background: var(--accent-green);"></div></div>
+      <div class="step-rate good">Show-up rate target</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-name">Sale Closed</div>
+      <div class="step-value" style="color: var(--accent-green);">10–20%</div>
+      <div class="step-bar"><div class="step-bar-fill" style="width:0.5%; background: var(--accent-green);"></div></div>
+      <div class="step-rate good">Close rate target</div>
+    </div>
+  </div>
+
+  <div class="insight-box purple">
+    <p><strong>Working backward from the revenue target:</strong> If Element needs to sell all units within 8 to 9 months, and the close rate on strategy calls is 15%, then the account needs to generate roughly 6 to 7 qualified strategy calls per unit to be sold. At a 60% show-up rate, that means 10 to 12 calls booked per unit. This gives us the target for cost per call booked and the budget required to achieve it.</p>
+  </div>
+</section>
+
+<!-- SLIDE 8: RETARGETING STRATEGY -->
+<section class="slide">
+  <span class="slide-number">08 / 15</span>
+  <div class="slide-tag">Retargeting Strategy</div>
+  <h1 class="slide-title">How We Close the Gap</h1>
+
+  <p style="margin-bottom: 24px;">At $250K AOV, the retargeting strategy is not optional. It is the core conversion mechanism. Most buyers will not book a strategy call on first exposure. Retargeting is where trust compounds and objections are systematically dismantled across multiple touchpoints.</p>
+
+  <div class="two-col">
+    <div>
+      <h2>Retargeting Pools</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Audience</th><th>Window</th><th>Intent Level</th><th>Creative</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Video Viewers 75%+</td><td>30 days</td><td class="warn">Medium</td><td>Testimonials, ROI deep-dive</td></tr>
+          <tr><td>Video Viewers 50%+</td><td>14 days</td><td class="neutral">Low-Medium</td><td>Lifestyle + financial proof</td></tr>
+          <tr><td>Website Visitors (all)</td><td>30 days</td><td class="warn">Medium</td><td>Objection-handling content</td></tr>
+          <tr><td>Key Page Visitors</td><td>14 days</td><td class="good">High</td><td>Scarcity + direct CTA</td></tr>
+          <tr><td>Calendly Visitors (no book)</td><td>7 days</td><td class="good">Very High</td><td>Urgency + founder direct message</td></tr>
+          <tr><td>IG/FB Page Engagers</td><td>30 days</td><td class="neutral">Low</td><td>Construction updates, lifestyle</td></tr>
+          <tr><td>Email/Customer List</td><td>Ongoing</td><td class="good">High</td><td>Exclusive updates + CTA</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h2>Retargeting Creative Sequencing</h2>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Touchpoint 1 (Days 1–3): Reinforce the Hook</h4>
+        <p>The prospect has seen the initial ad and visited the site. Serve a different angle on the same core message. If they saw the ROI breakdown, now show the founder walking the site. Different format, same trust trajectory.</p>
+      </div>
+      <div class="insight-box purple">
+        <h4 style="color: var(--accent-purple); margin-bottom: 8px;">Touchpoint 2 (Days 3–7): Handle the Objection</h4>
+        <p>They are interested but have not booked. The barrier is one of the five core objections. Serve testimonial content, legal explainer carousels, and management structure breakdowns. Address the specific concern that is blocking them.</p>
+      </div>
+      <div class="insight-box amber">
+        <h4 style="color: var(--accent-amber); margin-bottom: 8px;">Touchpoint 3 (Days 7–14): Create Urgency</h4>
+        <p>Construction progress update with unit count. "X units remaining." A direct message from Richard or Oliver inviting them to a strategy call. This is the conversion push: social proof plus scarcity plus a personal invitation.</p>
+      </div>
+      <div class="insight-box red">
+        <h4 style="color: var(--accent-red); margin-bottom: 8px;">Touchpoint 4 (Days 14–30): Final Nudge</h4>
+        <p>For prospects who have consumed significant content but still not booked: a carousel comparing Element's 10% guaranteed ROI against typical home-market yields (UK 3.5%, Australia 2.8%, Nordics 2.1%). Make the opportunity cost of inaction visceral.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: LANDING PAGE & CRO -->
+<section class="slide">
+  <span class="slide-number">09 / 15</span>
+  <div class="slide-tag">Landing Page & CRO</div>
+  <h1 class="slide-title">Converting Traffic Into Calls</h1>
+
+  <p style="margin-bottom: 24px;">The landing page is the bridge between ad spend and revenue. For a $250K investment, the page must do four things: establish credibility instantly, present the financial case clearly, handle objections proactively, and make booking a call feel like the obvious next step.</p>
+
+  <div class="two-col">
+    <div>
+      <h2>elementbali.com — CRO Priorities</h2>
+      <div class="insight-box red">
+        <h4 style="color: var(--accent-red); margin-bottom: 8px;">Hero Section Must Lead With the Offer</h4>
+        <p>Cold traffic from paid ads has 3 to 5 seconds to decide whether to stay. The hero section must immediately communicate the core value proposition: "Premium Bali investment property. 10% net ROI guaranteed for 5 years. Fully managed." If a visitor cannot understand the offer within the first scroll, the ad spend is wasted.</p>
+      </div>
+      <div class="insight-box amber">
+        <h4 style="color: var(--accent-amber); margin-bottom: 8px;">Trust Signals Above the Fold</h4>
+        <p>Social proof, construction progress indicators, and trust badges must be visible without scrolling. A small counter showing units sold or reserved creates urgency and social proof simultaneously. Press mentions, partnership logos, and investor count serve as credibility anchors.</p>
+      </div>
+      <div class="insight-box amber">
+        <h4 style="color: var(--accent-amber); margin-bottom: 8px;">Calendly CTA Repetition</h4>
+        <p>The strategy call booking CTA should appear at minimum three times: after the hero, after the ROI breakdown section, and as a sticky footer on mobile. Every section of the page should lead naturally to the CTA. Do not make the visitor search for how to take the next step.</p>
+      </div>
+    </div>
+    <div>
+      <h2>Page Structure Recommendations</h2>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Section 1: Hero + CTA</h4>
+        <p>Headline, sub-headline, hero image/render, primary CTA to book strategy call. Clear, premium, immediate.</p>
+      </div>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Section 2: The Investment Case</h4>
+        <p>10% ROI guarantee breakdown. Comparison table vs home-market yields. Payment structure overview. This is where the financial logic is presented.</p>
+      </div>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Section 3: The Property</h4>
+        <p>Renders, floor plans, amenities, location map. Canggu positioning. Show what the investor is buying.</p>
+      </div>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Section 4: Trust & Social Proof</h4>
+        <p>Construction progress photos/video. Founder bios. Investor testimonials. Legal structure overview. Press and partnerships.</p>
+      </div>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Section 5: FAQ + Final CTA</h4>
+        <p>Address the five core objections directly. End with a final CTA to book the strategy call. Remove all friction from the decision to take the next step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: TRACKING & PIXEL SETUP -->
+<section class="slide">
+  <span class="slide-number">10 / 15</span>
+  <div class="slide-tag">Tracking & Measurement</div>
+  <h1 class="slide-title">What We Will Measure and How</h1>
+
+  <p style="margin-bottom: 24px;">Without accurate tracking, the algorithm cannot optimise. For a brand new account with zero pixel data, the tracking setup in the first 48 hours determines the quality of every optimisation decision for the next 12 months. This must be right from day one.</p>
+
+  <div class="two-col">
+    <div>
+      <h2>Meta Pixel Events (Priority Order)</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Event</th><th>Trigger</th><th>Priority</th><th>Use</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>PageView</td><td>Landing page loads</td><td class="good">Critical</td><td>Retargeting pool, LPV optimisation</td></tr>
+          <tr><td>ViewContent</td><td>Key page scroll (50%+)</td><td class="good">Critical</td><td>Engagement quality signal</td></tr>
+          <tr><td>Lead</td><td>Calendly click</td><td class="good">Critical</td><td>Primary optimisation event (Phase 1)</td></tr>
+          <tr><td>Schedule</td><td>Call booked confirmation</td><td class="good">Critical</td><td>True conversion event (Phase 2)</td></tr>
+          <tr><td>Contact</td><td>Email/WhatsApp click</td><td class="warn">Secondary</td><td>Alternative intent signal</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box amber">
+        <p><strong>Optimisation event strategy for a cold account.</strong> With zero pixel data, we cannot optimise for call bookings on day one — there will not be enough conversion volume for Meta's algorithm to learn. Start by optimising for Landing Page Views in the first week, shift to Lead (Calendly click) in week 2, then graduate to Schedule (call booked) once we have 15+ bookings per week. This staged approach gives the pixel time to learn while still generating meaningful data.</p>
+      </div>
+    </div>
+    <div>
+      <h2>Conversion API (CAPI) Setup</h2>
+      <div class="insight-box">
+        <p><strong>Server-side tracking is non-negotiable.</strong> Browser-based pixel tracking alone misses 15 to 30% of conversions due to ad blockers, iOS privacy restrictions, and browser limitations. The Conversions API sends event data directly from the server, ensuring Meta receives complete attribution data. This is especially critical for a high-AOV account where every single conversion matters.</p>
+      </div>
+
+      <h2>UTM Structure</h2>
+      <div class="insight-box purple">
+        <p><strong>Standardised UTM parameters across all campaigns:</strong> utm_source=meta, utm_medium=paid, utm_campaign=[campaign_name], utm_content=[ad_name], utm_term=[adset_name]. This feeds into Google Analytics and Calendly tracking to attribute strategy call bookings back to specific campaigns, ad sets, and creative variants.</p>
+      </div>
+
+      <h2>Offline Conversion Tracking</h2>
+      <div class="insight-box gold">
+        <p><strong>Close the attribution loop.</strong> When a strategy call converts to a sale, that conversion event must be fed back into Meta as an offline conversion. At $250K per unit, even one correctly attributed sale transforms the algorithm's understanding of what a high-value prospect looks like. This is the highest-leverage tracking setup for a high-ticket funnel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: BUDGET & ECONOMICS -->
+<section class="slide">
+  <span class="slide-number">11 / 15</span>
+  <div class="slide-tag">Budget & Economics</div>
+  <h1 class="slide-title">Making the Numbers Work</h1>
+
+  <p style="margin-bottom: 24px;">At $250,000 per unit, the economics of paid acquisition are unusually forgiving. Even a modest margin per unit allows for an aggressive cost per acquisition relative to typical e-commerce benchmarks. The challenge is not cost efficiency. It is generating enough qualified pipeline volume within the 8 to 9 month window.</p>
+
+  <div class="metrics-grid">
+    <div class="metric-card gold">
+      <div class="metric-label">Average Order Value</div>
+      <div class="metric-value">$250K</div>
+      <div class="metric-sub">Per investment unit</div>
+    </div>
+    <div class="metric-card green">
+      <div class="metric-label">Allowable CPA</div>
+      <div class="metric-value">TBC</div>
+      <div class="metric-sub">Pending margin confirmation</div>
+    </div>
+    <div class="metric-card purple">
+      <div class="metric-label">Target Cost Per Call</div>
+      <div class="metric-value">$200–500</div>
+      <div class="metric-sub">Qualified strategy call booked</div>
+    </div>
+    <div class="metric-card amber">
+      <div class="metric-label">Learning Phase Budget</div>
+      <div class="metric-value">$3–5K</div>
+      <div class="metric-sub">First 2 weeks (data acquisition)</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h2>Budget Phasing</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Phase</th><th>Daily Budget</th><th>Monthly</th><th>Objective</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Week 1–2 (Learning)</td><td>$150–200/day</td><td>~$3,500</td><td>Data acquisition, creative testing</td></tr>
+          <tr><td>Week 3–4 (Optimising)</td><td>$200–350/day</td><td>~$7,500</td><td>Scale winners, build retargeting pools</td></tr>
+          <tr><td>Month 2 (Scaling)</td><td>$350–500/day</td><td>~$12,000</td><td>Push proven funnels, expand geos</td></tr>
+          <tr><td>Month 3+ (Growth)</td><td>$500–1,000/day</td><td>~$20,000+</td><td>Full-scale acquisition across all tiers</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p><strong>Budget scaling is performance-gated.</strong> We do not increase spend on a calendar. We increase spend when the data says the funnel is converting. If Week 1–2 shows cost per Calendly click above $50, we fix before scaling. If it shows below $20, we accelerate.</p>
+      </div>
+    </div>
+    <div>
+      <h2>Unit Economics Model</h2>
+      <div class="insight-box purple">
+        <p><strong>Hypothetical scenario (pending margin data):</strong> If net margin per unit is $50,000 (20% of $250K), the allowable CPA is $50,000 per sale. If 15% of strategy calls close, each call is worth $7,500. If 60% of booked calls show up, each booking is worth $4,500. This means we can afford to spend up to $4,500 to book a single strategy call and still break even. At $200 to $500 cost per call booked, the ROI on ad spend is extraordinary.</p>
+      </div>
+      <div class="insight-box amber">
+        <p><strong>The constraint is not budget. It is pipeline volume.</strong> Even at conservative margins, the math strongly favours paid acquisition. The real question is whether we can generate enough qualified calls per month to fill the sales pipeline. This is why creative quality, retargeting infrastructure, and funnel optimisation matter more than budget size.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12: COMPETITIVE LANDSCAPE -->
+<section class="slide">
+  <span class="slide-number">12 / 15</span>
+  <div class="slide-tag">Competitive Landscape</div>
+  <h1 class="slide-title">How Element Stands Out</h1>
+
+  <h2>Named Competitors (From Onboarding)</h2>
+  <table class="data-table">
+    <thead>
+      <tr><th>Competitor</th><th>Positioning</th><th>Paid Social Presence</th><th>Element's Advantage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Elle Resort & Beach Club</strong></td><td>Luxury resort + residences, Berawa</td><td class="neutral">Minimal</td><td>10% ROI guarantee vs no guaranteed returns</td></tr>
+      <tr><td><strong>Finns Bali Resort</strong></td><td>Lifestyle resort, established brand</td><td class="warn">Moderate (organic-led)</td><td>Investment-first positioning vs hospitality-first</td></tr>
+      <tr><td><strong>Magnum Resort Berawa</strong></td><td>New development, Berawa area</td><td class="neutral">Low</td><td>Contractual ROI guarantee + full management</td></tr>
+      <tr><td><strong>Alex Villas Laguna Complex</strong></td><td>Villa complex, lifestyle focus</td><td class="neutral">Low</td><td>Structured investment vehicle vs villa ownership</td></tr>
+      <tr><td><strong>Anta Residence</strong></td><td>Mid-range residences, Canggu</td><td class="neutral">Low</td><td>Premium positioning + guaranteed returns</td></tr>
+      <tr><td><strong>Coco Development</strong></td><td>Multi-project developer</td><td class="warn">Moderate</td><td>Single-project focus = higher trust signal</td></tr>
+    </tbody>
+  </table>
+
+  <div class="two-col" style="margin-top: 24px;">
+    <div>
+      <div class="insight-box">
+        <p><strong>The paid social space for premium Bali investment property is wide open.</strong> Most competitors rely on organic content, agent referrals, and existing investor networks. Few are running structured Meta Ads campaigns with proper funnel architecture. Element has a significant first-mover advantage in building a paid acquisition engine for this market segment.</p>
+      </div>
+    </div>
+    <div>
+      <div class="insight-box purple">
+        <p><strong>Element's core differentiator is the 10% net ROI guarantee.</strong> No other competitor in the named list offers a contractually guaranteed return. This is the single most powerful claim in the paid ads creative. Every competitor sells "potential" and "projected" returns. Element sells certainty. That is the messaging wedge that makes all creative work harder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13: CONTENT ENGINE -->
+<section class="slide">
+  <span class="slide-number">13 / 15</span>
+  <div class="slide-tag">Content Engine</div>
+  <h1 class="slide-title">Building a Production Rhythm</h1>
+
+  <p style="margin-bottom: 24px;">Paid social is a content consumption machine. Creative fatigue is the silent killer of scaling. For Element, the advantage is that the product itself generates content naturally: construction progresses weekly, Bali provides endless lifestyle footage, and the founder-led approach means Richard and Oliver are always one camera away from new creative.</p>
+
+  <div class="two-col">
+    <div>
+      <h2>Weekly Content Calendar</h2>
+      <div class="insight-box">
+        <h4 style="color: var(--accent-green); margin-bottom: 8px;">Every Monday: Construction Update</h4>
+        <p>30 to 60 second video showing the week's building progress. This serves triple duty: social proof (the project is real and moving), urgency (the window to buy is closing), and retargeting content (fresh creative for warm audiences). Richard or Oliver on camera, walking the site, pointing out progress.</p>
+      </div>
+      <div class="insight-box purple">
+        <h4 style="color: var(--accent-purple); margin-bottom: 8px;">Every Wednesday: Education / Objection Content</h4>
+        <p>Carousel or short video addressing one of the five core objections. How the ROI guarantee works. How Bali property law protects investors. What "fully managed" actually means in practice. This content feeds both organic and paid campaigns.</p>
+      </div>
+      <div class="insight-box amber">
+        <h4 style="color: var(--accent-amber); margin-bottom: 8px;">Every Friday: Lifestyle / Aspiration</h4>
+        <p>Bali lifestyle content. Sunsets, beaches, cafés, the Canggu scene. Overlaid with financial data or investment messaging. This is the top-of-funnel hook that draws people into the ecosystem before the harder sell begins.</p>
+      </div>
+    </div>
+    <div>
+      <h2>Asset Requirements From the Team</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Asset Type</th><th>Frequency</th><th>Who</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Founder talking head videos</td><td>2x per week</td><td>Richard / Oliver</td><td class="good">Critical</td></tr>
+          <tr><td>Construction site footage</td><td>Weekly</td><td>On-site team</td><td class="good">Critical</td></tr>
+          <tr><td>Drone footage (site + area)</td><td>Bi-weekly</td><td>Videographer</td><td class="warn">High</td></tr>
+          <tr><td>Investor testimonials</td><td>As available</td><td>Early buyers</td><td class="good">Critical</td></tr>
+          <tr><td>Bali lifestyle B-roll</td><td>Weekly</td><td>Content team</td><td class="warn">High</td></tr>
+          <tr><td>Architectural renders</td><td>One-time + updates</td><td>Design team</td><td class="warn">High</td></tr>
+          <tr><td>Floor plans + unit specs</td><td>One-time</td><td>Design team</td><td class="warn">High</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p><strong>The Google Drive link provided contains initial assets.</strong> We will audit this folder for ad-ready content and identify gaps. The most critical missing piece is typically founder-led video content and investor testimonials. These two asset types drive the highest trust signals in high-ticket paid social campaigns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14: LAUNCH ROADMAP -->
+<section class="slide">
+  <span class="slide-number">14 / 15</span>
+  <div class="slide-tag">Launch Roadmap</div>
+  <h1 class="slide-title">From Today to First Sale</h1>
+
+  <p style="margin-bottom: 24px;">The roadmap is structured around four phases, each with clear milestones and performance gates. We do not advance to the next phase until the current phase is delivering. Speed matters — every week without ads running is a week the 8 to 9 month clock is ticking.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-label">Phase 1: Foundation (Days 1–7)</div>
+      <h4>Build the Machine</h4>
+      <p>Install Meta Pixel and Conversions API on elementbali.com. Configure all custom events (PageView, ViewContent, Lead, Schedule). Set up UTM structure and verify Calendly integration. Build campaign structure in Ads Manager. Create custom audiences and lookalike seeds from the customer list provided. Produce and load first batch of 3 to 5 creative concepts. Set up Brand Monitoring. QA all tracking with Meta Pixel Helper and Events Manager. Book Go-Live Call.</p>
+    </div>
+    <div class="timeline-item purple">
+      <div class="timeline-label">Phase 2: Launch & Learn (Weeks 2–4)</div>
+      <h4>Buy Data and Find Signal</h4>
+      <p>Go live with cold traffic campaigns across Tier 1 geos (UK, Germany, Australia, Netherlands). Run all 5 creative concepts simultaneously with 2 to 3 hook variations each. Optimise for Landing Page Views initially, shift to Lead (Calendly click) in week 2. Kill underperforming ads at the ad level, iterate on winning concepts. Build retargeting pools from video viewers, website visitors, and page engagers. Launch retargeting campaigns once pools hit 1,000+ users. Daily monitoring and weekly reporting.</p>
+    </div>
+    <div class="timeline-item amber">
+      <div class="timeline-label">Phase 3: Optimise & Scale (Months 2–3)</div>
+      <h4>Push What Works</h4>
+      <p>Scale winning campaigns by 15 to 20% per week. Expand to Tier 2 geos (Nordics). Test localised copy in Swedish, Norwegian, Danish. Launch full retargeting sequence with creative sequencing by funnel stage. Shift optimisation event to Schedule (call booked) once volume supports it. Begin CRO testing on landing page based on heatmap and scroll data. Implement offline conversion tracking from closed sales. Introduce new creative concepts on a 7 to 10 day refresh cycle.</p>
+    </div>
+    <div class="timeline-item gold">
+      <div class="timeline-label">Phase 4: Full Scale (Months 4–9)</div>
+      <h4>Drive to Sellout</h4>
+      <p>Full-scale campaigns across all viable geos. Mature retargeting operation with multi-touchpoint creative sequences. Weekly construction updates feeding fresh content into paid campaigns. Lookalike audiences from call bookings and closed sales. Budget scaling tied to pipeline capacity and sales team bandwidth. Monthly strategy reviews to adjust targeting, creative, and budget allocation. Adjust scarcity messaging as units sell. Close the loop: feed every sale back into Meta as an offline conversion to sharpen the algorithm.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15: NEXT STEPS -->
+<section class="slide">
+  <span class="slide-number">15 / 15</span>
+  <div class="slide-tag">Next Steps</div>
+  <h1 class="slide-title">What Happens Now</h1>
+
+  <div class="two-col">
+    <div>
+      <h2>Client To-Dos (Before Go-Live)</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Action</th><th>Priority</th><th>Deadline</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Confirm margin per unit and payment structure</td><td class="good">Critical</td><td>This week</td></tr>
+          <tr><td>Confirm total units available and any sold/reserved</td><td class="good">Critical</td><td>This week</td></tr>
+          <tr><td>Share founder video content (Richard/Oliver on-site)</td><td class="good">Critical</td><td>Before go-live</td></tr>
+          <tr><td>Share any early investor testimonials</td><td class="good">Critical</td><td>Before go-live</td></tr>
+          <tr><td>Confirm ad account access (ID: 1080050093806268)</td><td class="good">Critical</td><td>Done ✓</td></tr>
+          <tr><td>Confirm Facebook Page access</td><td class="good">Critical</td><td>Done ✓</td></tr>
+          <tr><td>Complete remaining Discovery Sheet red sections</td><td class="warn">High</td><td>This week</td></tr>
+          <tr><td>Review and approve landing page CRO recommendations</td><td class="warn">High</td><td>Week 1</td></tr>
+          <tr><td>Share construction schedule / milestone dates</td><td class="warn">High</td><td>This week</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h2>Our To-Dos (Before Go-Live)</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Action</th><th>Priority</th><th>Timeline</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Install Meta Pixel + CAPI on elementbali.com</td><td class="good">Critical</td><td>Days 1–2</td></tr>
+          <tr><td>Configure all custom events + verify tracking</td><td class="good">Critical</td><td>Days 1–2</td></tr>
+          <tr><td>Build full campaign structure in Ads Manager</td><td class="good">Critical</td><td>Days 2–3</td></tr>
+          <tr><td>Produce initial creative batch (3–5 concepts)</td><td class="good">Critical</td><td>Days 3–5</td></tr>
+          <tr><td>Create custom audiences from customer list</td><td class="good">Critical</td><td>Day 2</td></tr>
+          <tr><td>Set up UTM structure + Calendly tracking</td><td class="good">Critical</td><td>Day 2</td></tr>
+          <tr><td>Draft ad copy variations for each concept</td><td class="warn">High</td><td>Days 3–4</td></tr>
+          <tr><td>Prepare CRO recommendations for landing page</td><td class="warn">High</td><td>Days 3–5</td></tr>
+          <tr><td>QA all tracking with Pixel Helper + Events Manager</td><td class="good">Critical</td><td>Day 5</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="three-col" style="margin-top: 32px;">
+    <div class="metric-card green">
+      <div class="metric-label">Go-Live Call</div>
+      <div class="metric-value" style="font-size: 24px;">4–5 Days</div>
+      <div class="metric-sub">Review ads, get sign-off, confirm launch</div>
+    </div>
+    <div class="metric-card purple">
+      <div class="metric-label">Campaigns Live</div>
+      <div class="metric-value" style="font-size: 24px;">Week 2</div>
+      <div class="metric-sub">Cold traffic goes live</div>
+    </div>
+    <div class="metric-card gold">
+      <div class="metric-label">First Strategy Calls</div>
+      <div class="metric-value" style="font-size: 24px;">Week 3–4</div>
+      <div class="metric-sub">First qualified calls from paid traffic</div>
+    </div>
+  </div>
+
+  <div class="insight-box" style="margin-top: 32px;">
+    <p><strong>The 8 to 9 month clock is already running.</strong> Construction started in late January. Every week without paid ads live is a week of potential pipeline not being built. The goal is to be live within 7 days of the Go-Live Call with tracking verified, creative loaded, and campaigns optimised for learning. From there, the system compounds: more data feeds better optimisation, which feeds better results, which feeds more budget, which feeds more calls, which feeds more sales.</p>
+  </div>
+</section>
+
+</body>
+</html>
