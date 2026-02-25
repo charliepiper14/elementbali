@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Element Residence Bali | Meta and Google Ads Implementation Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:    #0f0f1a;
+  --bg2:   #16162a;
+  --bg3:   #1a1a2e;
+  --bg4:   #1e1e3a;
+  --border: rgba(255,255,255,0.06);
+  --teal:  #00d9a5;
+  --teal-d: rgba(0,217,165,0.12);
+  --red:   #ef4444;
+  --red-d: rgba(239,68,68,0.12);
+  --amber: #f59e0b;
+  --amber-d: rgba(245,158,11,0.12);
+  --violet: #8b5cf6;
+  --violet-d: rgba(139,92,246,0.12);
+  --blue:  #3b82f6;
+  --blue-d: rgba(59,130,246,0.12);
+  --gold:  #A69070;
+  --gold-d: rgba(166,144,112,0.12);
+  --t1: #fff;
+  --t2: #a0a0b8;
+  --t3: #6b6b80;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--t1);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* SLIDE BASE */
+.slide {
+  min-height: 100vh;
+  padding: 52px 68px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+.slide:last-child { border-bottom: none; }
+.slide-num {
+  position: absolute;
+  top: 28px;
+  right: 48px;
+  font-size: 11px;
+  color: var(--t3);
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* TYPOGRAPHY */
+.eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: block;
+}
+.eyebrow.teal   { color: var(--teal); }
+.eyebrow.red    { color: var(--red); }
+.eyebrow.amber  { color: var(--amber); }
+.eyebrow.violet { color: var(--violet); }
+.eyebrow.gold   { color: var(--gold); }
+.eyebrow.blue   { color: var(--blue); }
+
+.slide-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+p {
+  font-size: 14px;
+  color: var(--t2);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+p:last-child { margin-bottom: 0; }
+strong { color: var(--t1); }
+.lead {
+  font-size: 16px;
+  color: var(--t2);
+  max-width: 700px;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+/* LAYOUT */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin: 20px 0 28px; }
+
+/* CARDS */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+}
+.card.teal   { border-top: 3px solid var(--teal); }
+.card.red    { border-top: 3px solid var(--red); }
+.card.amber  { border-top: 3px solid var(--amber); }
+.card.violet { border-top: 3px solid var(--violet); }
+.card.gold   { border-top: 3px solid var(--gold); }
+.card.blue   { border-top: 3px solid var(--blue); }
+
+.metric-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--t3);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.metric-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+.metric-sub {
+  font-size: 12px;
+  color: var(--t3);
+  margin-top: 6px;
+}
+
+/* BADGES */
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.badge.red    { background: var(--red-d);    color: var(--red);    border: 1px solid rgba(239,68,68,0.3); }
+.badge.amber  { background: var(--amber-d);  color: var(--amber);  border: 1px solid rgba(245,158,11,0.3); }
+.badge.teal   { background: var(--teal-d);   color: var(--teal);   border: 1px solid rgba(0,217,165,0.3); }
+.badge.violet { background: var(--violet-d); color: var(--violet); border: 1px solid rgba(139,92,246,0.3); }
+.badge.blue   { background: var(--blue-d);   color: var(--blue);   border: 1px solid rgba(59,130,246,0.3); }
+.badge.gold   { background: var(--gold-d);   color: var(--gold);   border: 1px solid rgba(166,144,112,0.3); }
+
+/* FINDING BLOCKS */
+.finding {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--red);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+}
+.finding.amber  { border-left-color: var(--amber); }
+.finding.teal   { border-left-color: var(--teal); }
+.finding.violet { border-left-color: var(--violet); }
+.finding.gold   { border-left-color: var(--gold); }
+.finding.blue   { border-left-color: var(--blue); }
+.finding-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* INSIGHT BOX */
+.insight {
+  background: var(--bg2);
+  border-left: 3px solid var(--teal);
+  padding: 18px 22px;
+  border-radius: 0 12px 12px 0;
+  margin: 16px 0;
+}
+.insight.red    { border-left-color: var(--red); }
+.insight.amber  { border-left-color: var(--amber); }
+.insight.violet { border-left-color: var(--violet); }
+.insight.gold   { border-left-color: var(--gold); }
+.insight.blue   { border-left-color: var(--blue); }
+
+/* TABLE */
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--bg2);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--t3);
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--t2);
+  font-size: 13px;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg4); }
+.good  { color: var(--teal)  !important; font-weight: 600; }
+.bad   { color: var(--red)   !important; font-weight: 600; }
+.warn  { color: var(--amber) !important; font-weight: 600; }
+
+/* ACTION ROWS */
+.action-list { padding: 0; }
+.action-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.action-row:last-child { border-bottom: none; }
+.action-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.action-num.red    { background: var(--red-d);    color: var(--red); }
+.action-num.amber  { background: var(--amber-d);  color: var(--amber); }
+.action-num.teal   { background: var(--teal-d);   color: var(--teal); }
+.action-num.violet { background: var(--violet-d); color: var(--violet); }
+.action-num.blue   { background: var(--blue-d);   color: var(--blue); }
+.action-num.gold   { background: var(--gold-d);   color: var(--gold); }
+.action-text { font-size: 14px; color: var(--t2); line-height: 1.6; }
+
+/* STAT BARS */
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.stat-row:last-child { border-bottom: none; }
+.stat-label { flex: 1; font-size: 13px; color: var(--t2); }
+.stat-val { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; min-width: 52px; text-align: right; }
+.bar { width: 100px; height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; }
+.bar-fill { height: 100%; border-radius: 3px; }
+
+/* TIMELINE */
+.timeline { padding-left: 28px; position: relative; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 22px; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -24px; top: 5px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 2px solid var(--bg);
+}
+.tl-item.amber::before  { background: var(--amber); }
+.tl-item.red::before    { background: var(--red); }
+.tl-item.violet::before { background: var(--violet); }
+.tl-item.gold::before   { background: var(--gold); }
+.tl-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--t3); margin-bottom: 3px; font-weight: 600; }
+.tl-title { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.tl-desc  { font-size: 13px; color: var(--t2); }
+
+/* CAMPAIGN BLOCK */
+.campaign-block {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.campaign-head {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.campaign-head.two-col { grid-template-columns: 220px 1fr; }
+.campaign-cell {
+  padding: 16px 20px;
+  border-right: 1px solid var(--border);
+}
+.campaign-cell:last-child { border-right: none; }
+.campaign-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--t3);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.campaign-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.campaign-obj {
+  font-size: 12px;
+  color: var(--t3);
+  margin-bottom: 6px;
+}
+.campaign-budget {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* AD COPY BOX */
+.ad-copy-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.ad-copy-inner {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+}
+.ad-copy-main { padding: 18px 20px; border-right: 1px solid var(--border); }
+.ad-copy-side { padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; }
+.ad-field-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--t3);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.ad-headline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.ad-body {
+  font-size: 13px;
+  color: var(--t2);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+.ad-desc {
+  font-size: 12px;
+  color: var(--t2);
+  line-height: 1.5;
+}
+.cta-btn {
+  background: var(--teal-d);
+  border: 1px solid rgba(0,217,165,0.3);
+  color: var(--teal);
+  text-align: center;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  margin-top: auto;
+}
+
+/* PHASE BLOCK */
+.phase {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+}
+.phase-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.phase-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.phase-num.teal   { background: var(--teal-d);   color: var(--teal); }
+.phase-num.amber  { background: var(--amber-d);  color: var(--amber); }
+.phase-num.red    { background: var(--red-d);     color: var(--red); }
+.phase-num.violet { background: var(--violet-d);  color: var(--violet); }
+.phase-num.gold   { background: var(--gold-d);    color: var(--gold); }
+
+/* KPI ROW */
+.kpi-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+.kpi-row:last-child { border-bottom: none; }
+.kpi-name { font-size: 14px; font-weight: 500; }
+.kpi-target {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--teal);
+}
+.kpi-ctx { font-size: 11px; color: var(--t3); text-align: right; }
+
+/* COVER */
+.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 65% 40%, rgba(0,217,165,0.06) 0%, transparent 55%),
+              radial-gradient(ellipse at 20% 80%, rgba(139,92,246,0.04) 0%, transparent 45%);
+}
+.cover-divider {
+  background: linear-gradient(135deg, rgba(0,217,165,0.08) 0%, rgba(139,92,246,0.05) 100%);
+  border: 1px solid rgba(0,217,165,0.15);
+  border-radius: 12px;
+  padding: 20px 28px;
+  margin-top: 32px;
+  display: inline-flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.cover-stat strong {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.cover-stat span {
+  font-size: 11px;
+  color: var(--t3);
+}
+
+/* SECTION DIVIDER */
+.section-divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+.section-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 120px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  margin-bottom: -40px;
+}
+
+/* WEEK CARD */
+.week-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.week-col {
+  padding: 22px;
+  border-right: 1px solid var(--border);
+}
+.week-col:last-child { border-right: none; }
+.week-col:nth-child(3), .week-col:nth-child(4) { border-top: 1px solid var(--border); }
+.week-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.week-label.red    { color: var(--red); }
+.week-label.amber  { color: var(--amber); }
+.week-label.teal   { color: var(--teal); }
+.week-label.green  { color: var(--teal); }
+
+/* NORTH STAR */
+.north-star {
+  background: linear-gradient(135deg, rgba(0,217,165,0.08) 0%, rgba(139,92,246,0.06) 100%);
+  border: 1px solid rgba(0,217,165,0.2);
+  border-radius: 12px;
+  padding: 22px 28px;
+  margin-bottom: 24px;
+}
+.north-star-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--teal);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.north-star-metric {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.north-star-note {
+  font-size: 13px;
+  color: var(--t2);
+}
+
+/* FUNNEL */
+.funnel-stage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin-bottom: 3px;
+}
+.funnel-label { font-size: 14px; font-weight: 600; }
+.funnel-val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+.funnel-arrow { text-align: center; font-size: 11px; color: var(--t3); padding: 3px 0; }
+
+/* KEYWORD PILLS */
+.kw { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 500; margin: 3px; }
+.kw.bad   { background: var(--red-d);   color: var(--red);   border: 1px solid rgba(239,68,68,0.2); }
+.kw.good  { background: var(--teal-d);  color: var(--teal);  border: 1px solid rgba(0,217,165,0.2); }
+.kw.warn  { background: var(--amber-d); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
+
+/* GEO TABLE */
+.geo-tier {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 8px;
+}
+.geo-tier-label { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.geo-tier-list { font-size: 12px; color: var(--t3); }
+
+/* PROGRESS BAR */
+.progress-wrap { height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 3px; }
+
+/* UTILITIES */
+.sep { height: 1px; background: var(--border); margin: 20px 0; }
+
+@media (max-width: 900px) {
+  .slide { padding: 36px 24px; }
+  .slide-title { font-size: 26px; }
+  .g2, .g3 { grid-template-columns: 1fr; }
+  .g4 { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ SLIDE 1 - COVER -->
+<section class="slide cover">
+  <span class="eyebrow teal">Heath Media - Paid Acquisition Blueprint - February 2026</span>
+  <h1 style="font-family:'DM Sans',sans-serif;font-size:52px;font-weight:700;line-height:1.1;margin-bottom:16px;">Meta and Google Ads<br>Implementation Blueprint</h1>
+  <p class="lead">Full campaign architecture · Ad copy · Hooks · Angles · Targeting · KPIs · 30-day launch roadmap</p>
+  <div class="cover-divider">
+    <div class="cover-stat"><strong style="color:var(--teal);">87</strong><span>Units Remaining</span></div>
+    <div class="cover-stat"><strong style="color:var(--amber);">EUR 12K</strong><span>Monthly Budget</span></div>
+    <div class="cover-stat"><strong style="color:var(--t1);">8-9 Months</strong><span>Sell-Out Target</span></div>
+    <div class="cover-stat"><strong style="color:var(--t1);">$250K</strong><span>Avg Unit Value</span></div>
+  </div>
+  <p style="margin-top:28px;font-size:12px;color:var(--t3);">Prepared for Investland Bali Group - Richard and Oliver - Confidential</p>
+</section>
+
+<!-- ============================================================ SLIDE 2 - STRATEGIC FOUNDATION -->
+<section class="slide">
+  <span class="slide-num">02</span>
+  <span class="eyebrow gold">Strategic Foundation</span>
+  <h1 class="slide-title">What We Know, What We Fixed, What We Are Building On</h1>
+
+  <div class="g3">
+    <div>
+      <div class="finding" style="margin-bottom:0;height:100%;">
+        <div class="finding-header"><span class="badge red">Problem Inherited</span></div>
+        <h3>What Was Wrong</h3>
+        <div class="action-list" style="margin-top:10px;">
+          <div class="action-row"><div class="action-num red">1</div><div class="action-text">EUR 4,357 spent. Zero qualified calls booked.</div></div>
+          <div class="action-row"><div class="action-num red">2</div><div class="action-text">62% of Meta budget on Reach campaigns - cannot generate leads by design.</div></div>
+          <div class="action-row"><div class="action-num red">3</div><div class="action-text">Retargeting audience burned at 18.7x frequency.</div></div>
+          <div class="action-row"><div class="action-num red">4</div><div class="action-text">484 Google conversions - all misconfigured micro-signals.</div></div>
+          <div class="action-row"><div class="action-num red">5</div><div class="action-text">Lead pixel inactive, domain unverified.</div></div>
+          <div class="action-row"><div class="action-num red">6</div><div class="action-text">Zero tracking of Calendly call bookings on either channel.</div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="finding teal" style="margin-bottom:0;height:100%;">
+        <div class="finding-header"><span class="badge teal">Signals Worth Building On</span></div>
+        <h3>What the Data Shows</h3>
+        <div class="action-list" style="margin-top:10px;">
+          <div class="action-row"><div class="action-num teal">1</div><div class="action-text">Estonian creative: EUR 10 CPL vs EUR 60 account average - 5.6x outperforming.</div></div>
+          <div class="action-row"><div class="action-num teal">2</div><div class="action-text">Brochure-to-call email: 176% open rate, 17.1% CTR.</div></div>
+          <div class="action-row"><div class="action-num teal">3</div><div class="action-text">Location Nelayan video: 1,652 plays to 50% completion from EUR 82 spend.</div></div>
+          <div class="action-row"><div class="action-num teal">4</div><div class="action-text">With vs Without Element: strong video retention rate.</div></div>
+          <div class="action-row"><div class="action-num teal">5</div><div class="action-text">20 units booked organically - proven market demand exists.</div></div>
+          <div class="action-row"><div class="action-num teal">6</div><div class="action-text">Pixel live, domain verified, events now firing correctly.</div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="finding gold" style="margin-bottom:0;height:100%;">
+        <div class="finding-header"><span class="badge gold">Competitive Weapons</span></div>
+        <h3>What We Lead With</h3>
+        <div class="action-list" style="margin-top:10px;">
+          <div class="action-row"><div class="action-num gold">1</div><div class="action-text">Institutional contractor - 50+ Jakarta skyscrapers, 1.5M sqm per year.</div></div>
+          <div class="action-row"><div class="action-num gold">2</div><div class="action-text">ESA Architects - Bali's most recognised firm, behind Komaneka.</div></div>
+          <div class="action-row"><div class="action-num gold">3</div><div class="action-text">Pre-construction permits - legally clean before a brick was laid.</div></div>
+          <div class="action-row"><div class="action-num gold">4</div><div class="action-text">50-year leasehold vs market average of 25 years.</div></div>
+          <div class="action-row"><div class="action-num gold">5</div><div class="action-text">10% annual net ROI - contractual, used as a sales closer not a hook.</div></div>
+          <div class="action-row"><div class="action-num gold">6</div><div class="action-text">Canggu Nelayan - walkable to every amenity investors come for.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 3 - ICP AND TARGETING -->
+<section class="slide">
+  <span class="slide-num">03</span>
+  <span class="eyebrow blue">Target Audience and ICP</span>
+  <h1 class="slide-title">Ideal Customer Profile - Who We Are Targeting and Why They Buy</h1>
+
+  <div class="g2">
+    <div>
+      <h2>Buyer Profile</h2>
+      <table>
+        <thead><tr><th>Attribute</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Age</strong></td><td>30-55 years old</td></tr>
+          <tr><td><strong>Gender skew</strong></td><td>65-70% male - investment-led product</td></tr>
+          <tr><td><strong>Income</strong></td><td>EUR 150K+ household / existing investment portfolio</td></tr>
+          <tr><td><strong>Life stage</strong></td><td>Mid-career professional, business owner, portfolio diversifier, early retiree</td></tr>
+          <tr><td><strong>Platforms</strong></td><td>Active on Instagram and Facebook - consumes travel and investing content</td></tr>
+          <tr><td><strong>Trigger</strong></td><td>European property yields 3-4% - looking for managed passive alternative</td></tr>
+          <tr><td><strong>Connection</strong></td><td>Has visited Bali or actively researching Asia investment</td></tr>
+        </tbody>
+      </table>
+
+      <h2 style="margin-top:20px;">5 Belief Shifts We Must Achieve</h2>
+      <div class="action-list" style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:0 18px;">
+        <div class="action-row"><div class="action-num teal">1</div><div class="action-text">Guaranteed returns are not a red flag - they are contractual and backed by the hotel agreement.</div></div>
+        <div class="action-row"><div class="action-num teal">2</div><div class="action-text">Overseas developer? ESA Architects and an institutional contractor equal trust.</div></div>
+        <div class="action-row"><div class="action-num teal">3</div><div class="action-text">Bali leasehold is legal, proven, and lucrative with a 50-year horizon.</div></div>
+        <div class="action-row"><div class="action-num teal">4</div><div class="action-text">At $250K this is a business decision, not a holiday purchase.</div></div>
+        <div class="action-row"><div class="action-num teal">5</div><div class="action-text">Passive management is real - the hotel operator handles everything on behalf of the investor.</div></div>
+      </div>
+    </div>
+    <div>
+      <h2>Geo Targeting Tiers</h2>
+      <div class="geo-tier">
+        <div class="geo-tier-label" style="color:var(--teal);">Tier 1 - Launch (Primary Budget)</div>
+        <div class="geo-tier-list">Norway · Sweden · Denmark · Finland · UK · Germany · Austria · Switzerland · Australia</div>
+      </div>
+      <div class="geo-tier">
+        <div class="geo-tier-label" style="color:var(--amber);">Tier 2 - Scale (Month 2 onward)</div>
+        <div class="geo-tier-list">Netherlands · Belgium · France · Estonia · Latvia · Lithuania · Singapore · UAE</div>
+      </div>
+      <div class="geo-tier">
+        <div class="geo-tier-label" style="color:var(--t3);">Tier 3 - Test (After Tier 1 is proven)</div>
+        <div class="geo-tier-list">USA · Canada · New Zealand · Poland · Ireland</div>
+      </div>
+
+      <div class="insight" style="margin-top:16px;">
+        <p>Estonian ad set runs independently from Tier 1. Christian's existing network combined with a 5.6x CPL advantage justifies dedicated budget from Day 1.</p>
+      </div>
+
+      <h2 style="margin-top:20px;">Language Strategy</h2>
+      <div class="card">
+        <p style="margin:0;">English-first across all Tier 1 geos. Nordic countries and the Netherlands are high-English-proficiency markets. Estonia runs native ET language. German native copy for DE/AT/CH to be tested in Month 2 once the English baseline is established.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 4 - META ARCHITECTURE -->
+<section class="slide">
+  <span class="slide-num">04</span>
+  <span class="eyebrow violet">Meta Ads - Campaign Architecture</span>
+  <h1 class="slide-title">Three-Layer Funnel - Cold, Warm, Hot</h1>
+
+  <div class="insight amber" style="margin-bottom:24px;">
+    <p><strong>Housing Special Ad Category must be selected.</strong> Demographic targeting is restricted - creative does the filtering. Use Advantage+ Broad with interest stacking.</p>
+  </div>
+
+  <div class="campaign-block">
+    <div class="campaign-head">
+      <div class="campaign-cell">
+        <div class="campaign-label">Campaign 1</div>
+        <div class="campaign-name">Cold Awareness</div>
+        <div class="campaign-obj">Objective: Video Views / Reach</div>
+        <div class="campaign-budget">EUR 1,200 / mo</div>
+        <div style="font-size:11px;color:var(--t3);margin-top:4px;">20% of Meta budget</div>
+      </div>
+      <div class="campaign-cell">
+        <div class="campaign-label">Audience</div>
+        <p style="font-size:13px;margin:0;">Advantage+ Broad with interest stacking: Real estate investing, Passive income, Bali travel, Expat living, Financial independence</p>
+      </div>
+      <div class="campaign-cell">
+        <div class="campaign-label">KPI and Creative Direction</div>
+        <p style="font-size:13px;margin:0;"><strong>Cost per ThruPlay under EUR 0.05 · Video completion above 40%</strong></p>
+        <p style="font-size:12px;color:var(--t3);margin-top:6px;margin-bottom:0;">Lifestyle-led: Canggu location walk, day-in-life content, weekly construction updates</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="campaign-block">
+    <div class="campaign-head">
+      <div class="campaign-cell">
+        <div class="campaign-label">Campaign 2</div>
+        <div class="campaign-name">Cold Consideration</div>
+        <div class="campaign-obj">Objective: Conversions (Lead Event)</div>
+        <div class="campaign-budget">EUR 3,000 / mo</div>
+        <div style="font-size:11px;color:var(--t3);margin-top:4px;">50% of Meta budget</div>
+      </div>
+      <div class="campaign-cell">
+        <div class="campaign-label">Audience</div>
+        <p style="font-size:13px;margin:0;">Advantage+ Broad with interest signals: Property investor, High-net-worth, Portfolio diversification. Estonian audience runs as a dedicated ad set.</p>
+      </div>
+      <div class="campaign-cell">
+        <div class="campaign-label">KPI and Creative Direction</div>
+        <p style="font-size:13px;margin:0;"><strong>CPL target under EUR 40 · CTR above 1.2%</strong></p>
+        <p style="font-size:12px;color:var(--t3);margin-top:6px;margin-bottom:0;">Investment-led: ROI positioning, institutional credibility, European return comparison</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="campaign-block">
+    <div class="campaign-head">
+      <div class="campaign-cell">
+        <div class="campaign-label">Campaign 3</div>
+        <div class="campaign-name">Warm Retargeting</div>
+        <div class="campaign-obj">Objective: Conversions (Call Booked)</div>
+        <div class="campaign-budget">EUR 1,800 / mo</div>
+        <div style="font-size:11px;color:var(--t3);margin-top:4px;">30% of Meta budget</div>
+      </div>
+      <div class="campaign-cell">
+        <div class="campaign-label">Audience</div>
+        <p style="font-size:13px;margin:0;">Video viewers 25%+ (90 days) · Website visitors (60 days) · Brochure downloaders · MailChimp custom audience · Frequency cap: 3 per week</p>
+      </div>
+      <div class="campaign-cell">
+        <div class="campaign-label">KPI and Creative Direction</div>
+        <p style="font-size:13px;margin:0;"><strong>Cost per call booked under EUR 150</strong></p>
+        <p style="font-size:12px;color:var(--t3);margin-top:6px;margin-bottom:0;">Trust and urgency: Phase 1 pricing closing, permits confirmed, 20 units already reserved, ROI guarantee reveal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 5 - COLD HOOKS -->
+<section class="slide">
+  <span class="slide-num">05</span>
+  <span class="eyebrow violet">Meta Ad Copy - Cold Audience Hooks</span>
+  <h1 class="slide-title">6 High-Converting Opening Hooks for Cold Traffic</h1>
+  <p class="lead">Each hook is designed to interrupt the scroll, trigger a specific belief shift, and drive a click or form open.</p>
+
+  <div class="g3">
+    <div class="finding blue">
+      <div class="finding-header"><span class="badge blue">Hook 01</span><h3>The European Return Problem</h3></div>
+      <p style="font-size:13px;font-style:italic;">"Your savings account returns 2%. European rental yields average 3-4%. Meanwhile, investors in Bali are earning 10% net per year - contractually."</p>
+      <p style="font-size:12px;color:var(--t3);">Loss aversion combined with competitive comparison. Speaks directly to Nordic and DACH investors frustrated with home market underperformance.</p>
+      <div style="margin-top:10px;font-size:12px;color:var(--teal);font-weight:600;">Download the Element Residence Investment Brochure</div>
+    </div>
+
+    <div class="finding blue">
+      <div class="finding-header"><span class="badge blue">Hook 02</span><h3>The Location Disqualifier</h3></div>
+      <p style="font-size:13px;font-style:italic;">"Most Bali apartments are 25 minutes from everything. Element Residence is in the middle of Canggu - walk to the beach, the restaurants, the surf. No scooter required."</p>
+      <p style="font-size:12px;color:var(--t3);">Location specificity creates instant visualisation. Works especially well for anyone who has visited Bali. Builds desire before the investment case is made.</p>
+      <div style="margin-top:10px;font-size:12px;color:var(--teal);font-weight:600;">See the property and the numbers</div>
+    </div>
+
+    <div class="finding blue">
+      <div class="finding-header"><span class="badge blue">Hook 03</span><h3>The Passive Income Angle</h3></div>
+      <p style="font-size:13px;font-style:italic;">"107-unit apartment complex. Built by the same contractor who built 50+ skyscrapers in Jakarta. Managed entirely by a global hotel operator. You invest. They run it."</p>
+      <p style="font-size:12px;color:var(--t3);">Removes the management objection immediately. Institutional credibility in a single sentence. "They run it" is the close.</p>
+      <div style="margin-top:10px;font-size:12px;color:var(--teal);font-weight:600;">See full investment structure at elementbali.com</div>
+    </div>
+
+    <div class="finding blue">
+      <div class="finding-header"><span class="badge blue">Hook 04</span><h3>The Risk Comparison</h3></div>
+      <p style="font-size:13px;font-style:italic;">"Other Bali developers promise 15-20% returns. We promise 10%. The difference? Ours is in the contract."</p>
+      <p style="font-size:12px;color:var(--t3);">Reframes a conservative ROI as a strength. Disqualifies competitors without naming them. Creates credibility through restraint.</p>
+      <div style="margin-top:10px;font-size:12px;color:var(--teal);font-weight:600;">Download the investment brochure</div>
+    </div>
+
+    <div class="finding blue">
+      <div class="finding-header"><span class="badge blue">Hook 05</span><h3>The Leasehold Education Hook</h3></div>
+      <p style="font-size:13px;font-style:italic;">"Most Bali properties sell 25-year leaseholds. Anything under 25 years is a depreciating asset - like driving a car off a lot. Element Residence: 50 years."</p>
+      <p style="font-size:12px;color:var(--t3);">Educates a common misconception using Richard's own words. Positions Element as the informed choice. Converts well on warm audiences.</p>
+      <div style="margin-top:10px;font-size:12px;color:var(--teal);font-weight:600;">Request the full investment analysis</div>
+    </div>
+
+    <div class="finding violet">
+      <div class="finding-header"><span class="badge violet">Hook 06</span><h3>Estonian / Nordic Native Ad Set</h3></div>
+      <p style="font-size:13px;font-style:italic;">[ET] "Eesti investorid teenivad Balis 10% netotulusust aastas. Element Residence on ainus projekt, kus on institutsionaalne tooevotja, 50-aastane rent ja eelehitusload."</p>
+      <p style="font-size:12px;color:var(--t3);">Christian's network combined with Estonian creative already running at 5.6x the account average. Separate budget, dedicated ad set. English version available for broader Nordics.</p>
+      <div style="margin-top:10px;font-size:12px;color:var(--teal);font-weight:600;">[ET] Lae alla investeeringute broshuur</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 6 - COLD AD COPY FULL -->
+<section class="slide">
+  <span class="slide-num">06</span>
+  <span class="eyebrow violet">Meta Ad Copy - Full Cold Conversion Ads</span>
+  <h1 class="slide-title">Complete Ad Scripts - Ready to Deploy</h1>
+  <p class="lead">Primary Text, Headline, Description, and CTA for Campaign 2 (Cold Consideration)</p>
+
+  <div class="ad-copy-box">
+    <div class="ad-copy-inner">
+      <div class="ad-copy-main">
+        <div class="ad-field-label">Ad 01 - Headline</div>
+        <div class="ad-headline">10% Net ROI. Bali. No Guesswork.</div>
+        <div class="ad-field-label">Primary Text</div>
+        <div class="ad-body">European rental yields average 3-4%.
+
+In Bali, investors at Element Residence earn 10% net per year - from a 107-unit complex built by Indonesia's most respected contractor and managed by a global hotel operator.
+
+No managing tenants. No maintenance. No surprises.
+
+Phase 1 pricing is live. It goes up when the foundation completes.</div>
+      </div>
+      <div class="ad-copy-side">
+        <div>
+          <div class="ad-field-label">Description</div>
+          <div class="ad-desc">50-year leasehold · Pre-construction permits · Institutional contractor</div>
+        </div>
+        <div class="cta-btn">Download Brochure</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-copy-box">
+    <div class="ad-copy-inner">
+      <div class="ad-copy-main">
+        <div class="ad-field-label">Ad 02 - Headline</div>
+        <div class="ad-headline">The Bali Investment Built for Serious Investors</div>
+        <div class="ad-field-label">Primary Text</div>
+        <div class="ad-body">Most developers in Bali promise 15-20% returns.
+
+We built Element Residence differently. Institutional-grade contractor. Legal permits secured before a single brick was laid. ESA Architects - who built Komaneka.
+
+10% annual net return. Contractual. For 5 years.
+
+This is not a gamble. It is a structured investment.</div>
+      </div>
+      <div class="ad-copy-side">
+        <div>
+          <div class="ad-field-label">Description</div>
+          <div class="ad-desc">Phase 1 units from $169,000 · 107 units · 20 already reserved</div>
+        </div>
+        <div class="cta-btn">Get the Investment Analysis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 7 - RETARGETING COPY -->
+<section class="slide">
+  <span class="slide-num">07</span>
+  <span class="eyebrow violet">Meta Ad Copy - Retargeting and Warm Audience</span>
+  <h1 class="slide-title">Campaign 3 - Warm Retargeting Copy</h1>
+  <p class="lead">For video viewers, website visitors, and brochure downloaders - these people already know Element Residence.</p>
+
+  <div class="ad-copy-box" style="margin-bottom:14px;">
+    <div class="ad-copy-inner">
+      <div class="ad-copy-main">
+        <div class="ad-field-label">Retargeting Ad 01 - Phase 1 Urgency</div>
+        <div class="ad-headline">Phase 1 Pricing Closes When Foundation Completes</div>
+        <div class="ad-body">You looked at Element Residence. The numbers made sense.
+
+Here is what changes at Phase 2: the price goes up.
+
+Phase 1 is live right now. 87 units remain. 20 are already reserved by early investors.
+
+Book a 30-minute strategy call. We will map out exactly what a unit investment looks like for your situation.</div>
+      </div>
+      <div class="ad-copy-side">
+        <div><div class="ad-field-label">Description</div><div class="ad-desc">From $169,000 · 10% net ROI · 50-year leasehold</div></div>
+        <div class="cta-btn">Book Your Strategy Call</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-copy-box" style="margin-bottom:14px;">
+    <div class="ad-copy-inner">
+      <div class="ad-copy-main">
+        <div class="ad-field-label">Retargeting Ad 02 - Trust and Credibility</div>
+        <div class="ad-headline">Why Element Is Unlike Any Other Bali Development</div>
+        <div class="ad-body">We know you have seen other Bali projects.
+
+Institutional contractor (50+ Jakarta skyscrapers, 1.5M sqm per year)
+ESA Architects - behind Komaneka and Bali's most recognised builds
+All permits secured before construction began
+50-year leasehold - double the Bali market average
+
+This is Bali real estate built to institutional standards.</div>
+      </div>
+      <div class="ad-copy-side">
+        <div><div class="ad-field-label">Description</div><div class="ad-desc">Pre-construction permits · ESA Architects · Canggu Nelayan</div></div>
+        <div class="cta-btn">See Full Project Details</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-copy-box">
+    <div class="ad-copy-inner">
+      <div class="ad-copy-main">
+        <div class="ad-field-label">Retargeting Ad 03 - ROI Guarantee Reveal (Warm Audiences Only)</div>
+        <div class="ad-headline">10% Net ROI. Guaranteed. In the Contract.</div>
+        <div class="ad-body">We do not lead with this in cold ads because it sounds too good.
+
+But if you have been doing your research: Element Residence offers a 10% annual net ROI, contractually guaranteed for the first 5 years. Backed by the hotel management agreement and the project's full financial structure.
+
+You have seen the project. Now see the contract.
+
+Book a call - we will walk through the full legal and financial structure.</div>
+      </div>
+      <div class="ad-copy-side">
+        <div><div class="ad-field-label">Description</div><div class="ad-desc">Contractual ROI · Hotel-managed · Fully passive</div></div>
+        <div class="cta-btn">Book a Strategy Call</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 8 - CREATIVE REDEPLOYMENT -->
+<section class="slide">
+  <span class="slide-num">08</span>
+  <span class="eyebrow amber">Existing Creative - How to Redeploy for Maximum Impact</span>
+  <h1 class="slide-title">Right Asset, Right Objective, Right Audience</h1>
+  <p class="lead">No filming needed to launch. Your best creative already exists. It just needs to be repositioned.</p>
+
+  <div class="g3">
+    <div class="finding amber">
+      <div class="finding-header"><span class="badge amber">Move</span><h3>Location Nelayan Video</h3></div>
+      <p style="font-size:12px;"><strong>Current:</strong> Reach objective - cannot generate leads by design.</p>
+      <p style="font-size:13px;">Move to Campaign 2 (Cold Consideration, Conversions objective). Add CTA overlay: "See the full investment opportunity." Attach lead form or link to brochure page.</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--amber);font-weight:600;">Feed and Reels · Cold Consideration · Priority: HIGH</div>
+    </div>
+
+    <div class="finding amber">
+      <div class="finding-header"><span class="badge amber">Move</span><h3>With vs Without Element</h3></div>
+      <p style="font-size:12px;"><strong>Current:</strong> Wrong objective - not converting despite strong retention.</p>
+      <p style="font-size:13px;">Move to Campaign 2 with Conversions objective. Strong Phase 1 awareness piece. Add "Phase 1 pricing now live" title card at the end of the video.</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--amber);font-weight:600;">Feed · Cold Consideration and Warm · Priority: HIGH</div>
+    </div>
+
+    <div class="finding teal">
+      <div class="finding-header"><span class="badge teal">Create Weekly</span><h3>Construction Update Videos</h3></div>
+      <p style="font-size:12px;"><strong>Current:</strong> Not yet in paid ads - highest priority content type.</p>
+      <p style="font-size:13px;">Deploy immediately to Warm Retargeting. Phone quality is intentional. Label: "[Week X] Element Residence Update - Canggu." Keeps retargeting creative fresh. Kills objections better than any scripted ad.</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--teal);font-weight:600;">Stories and Reels · Warm Retargeting · Priority: CRITICAL</div>
+    </div>
+
+    <div class="finding teal">
+      <div class="finding-header"><span class="badge teal">Scale</span><h3>Estonian Language Creative</h3></div>
+      <p style="font-size:12px;"><strong>Current:</strong> EUR 10 CPL vs EUR 60 account average - 5.6x outperforming.</p>
+      <p style="font-size:13px;">Separate ad set with 15% of Campaign 2 budget. Christian's face and name for the Estonian audience. Add English version for broader Nordics. Build lookalike from existing Estonian buyers.</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--teal);font-weight:600;">Feed · Cold Consideration · Estonia and Finland · Priority: CRITICAL</div>
+    </div>
+
+    <div class="finding amber">
+      <div class="finding-header"><span class="badge amber">Reclassify</span><h3>Omnipresent Reach Ads (14 creatives)</h3></div>
+      <p style="font-size:12px;"><strong>Current:</strong> All on Reach - EUR 201/mo with zero conversion output.</p>
+      <p style="font-size:13px;">Sort into two buckets: lifestyle and aspiration goes to Campaign 1 (awareness, builds retargeting pool). Trust and credibility goes to Campaign 3 (warm retargeting). Kill the standalone Reach campaign entirely.</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--amber);font-weight:600;">Reassigned across C1 and C3 · Priority: MEDIUM</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header"><span class="badge gold">Send to Editor</span><h3>B-Roll and Raw Footage in Drive</h3></div>
+      <p style="font-size:12px;"><strong>Current:</strong> Available in Drive but unused in any paid campaign.</p>
+      <p style="font-size:13px;">Label and organise in Drive folders. Send to Heath Media video team for 3-5 edited cuts: 15s hook cuts, 30s full-story version, 60s investor explainer. Turnaround 2-3 days.</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--gold);font-weight:600;">Feed and Reels · All campaigns · Priority: HIGH</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 9 - GOOGLE ARCHITECTURE -->
+<section class="slide">
+  <span class="slide-num">09</span>
+  <span class="eyebrow blue">Google Ads - Full Account Architecture</span>
+  <h1 class="slide-title">Three-Campaign Structure Built From Scratch</h1>
+  <p class="lead">Search, PMax, and Remarketing - sequenced by intent and data availability.</p>
+
+  <div class="campaign-block">
+    <div class="campaign-head">
+      <div class="campaign-cell">
+        <div class="campaign-label">Campaign A</div>
+        <div class="campaign-name">Buyer Intent Search</div>
+        <div class="campaign-obj">Search Network ONLY - no display, no search partners</div>
+        <div class="campaign-budget">EUR 3,000 / mo</div>
+        <div style="font-size:11px;color:var(--t3);margin-top:4px;">50% of Google budget</div>
+        <div style="margin-top:8px;font-size:11px;color:var(--t2);">Bidding: Manual CPC, then Max Conversions at 30+ conversions, then Target ROAS at scale.</div>
+      </div>
+      <div class="campaign-cell" style="grid-column: 2 / 4;">
+        <div class="campaign-label">Ad Groups</div>
+        <div class="g2" style="gap:14px;margin-top:8px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--t1);margin-bottom:3px;">AG1 - Direct Bali Investment</div>
+            <div style="font-size:11px;color:var(--t3);">'bali apartment investment', 'bali property investment', 'buy apartment bali', 'invest in bali real estate'</div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--t1);margin-bottom:3px;">AG2 - High Yield Overseas</div>
+            <div style="font-size:11px;color:var(--t3);">'high yield property investment', 'overseas property ROI', 'passive income real estate', 'best property returns'</div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--t1);margin-bottom:3px;">AG3 - Legal and Trust Research</div>
+            <div style="font-size:11px;color:var(--t3);">'is bali property safe', 'bali leasehold explained', 'bali foreigner property rights', 'bali investment guide'</div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--t1);margin-bottom:3px;">AG4 - Estonian and Nordic Native</div>
+            <div style="font-size:11px;color:var(--t3);">'kinnisvara investeering Bali', 'Bali korteri ostmine', 'passive sissetulek Bali' [ET language targeting]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="campaign-block">
+    <div class="campaign-head">
+      <div class="campaign-cell">
+        <div class="campaign-label">Campaign B</div>
+        <div class="campaign-name">Performance Max</div>
+        <div class="campaign-obj">Add AFTER Campaign A reaches 30+ conversions</div>
+        <div class="campaign-budget">EUR 1,800 / mo</div>
+        <div style="font-size:11px;color:var(--t3);margin-top:4px;">30% of Google budget</div>
+        <div style="margin-top:8px;font-size:11px;color:var(--t2);">Max Conversions with conversion value rules. Primary goal: Call Booking.</div>
+      </div>
+      <div class="campaign-cell" style="grid-column: 2 / 4;">
+        <div class="campaign-label">Asset Groups</div>
+        <div class="g2" style="gap:14px;margin-top:8px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--t1);margin-bottom:3px;">AG1 - EU and Nordic Investors</div>
+            <div style="font-size:11px;color:var(--t3);">Audience signals: confirmed buyers (customer match) + investment intent search themes + website visitors</div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--t1);margin-bottom:3px;">AG2 - Estonian and Nordic Native Language</div>
+            <div style="font-size:11px;color:var(--t3);">Estonian assets. Audience: website visitors and Christian's network custom list. Native ET copy and landing page.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="campaign-block">
+    <div class="campaign-head">
+      <div class="campaign-cell">
+        <div class="campaign-label">Campaign C</div>
+        <div class="campaign-name">Remarketing</div>
+        <div class="campaign-obj">Display and Search Remarketing. Launch Week 3.</div>
+        <div class="campaign-budget">EUR 1,200 / mo</div>
+        <div style="font-size:11px;color:var(--t3);margin-top:4px;">20% of Google budget</div>
+        <div style="margin-top:8px;font-size:11px;color:var(--t2);">Start Max Conversions, switch to Target CPA once data accumulates. Frequency capped.</div>
+      </div>
+      <div class="campaign-cell" style="grid-column: 2 / 4;">
+        <div class="campaign-label">Audience Segments</div>
+        <div style="margin-top:8px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:13px;color:var(--t2);">Website Visitors (60 days) who did not download the brochure or book a call.</div>
+          <div style="font-size:13px;color:var(--t2);">Brochure Downloaders who did not book a call - highest conversion probability of any segment.</div>
+          <div style="font-size:13px;color:var(--t2);">Customer Match: Pipedrive lead list and 20 confirmed buyers used for exclusion and lookalike seeding.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 10 - RSA COPY AG1 -->
+<section class="slide">
+  <span class="slide-num">10</span>
+  <span class="eyebrow blue">Google Ads - RSA Copy: Ad Group 1 (Direct Bali Investment)</span>
+  <h1 class="slide-title">Responsive Search Ad Copy - Ready to Upload</h1>
+  <p class="lead">15 headlines · 4 descriptions · Pin H1 as keyword variant · H2 as benefit · H3 as CTA</p>
+
+  <div class="g2">
+    <div>
+      <h2>Headlines - Ad Group 1: Direct Bali Investment</h2>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;">
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H1:</span> Bali Apartment Investment</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H2:</span> 10% Net ROI Guaranteed</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H3:</span> Invest in Bali Real Estate</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H4:</span> Element Residence Canggu</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H5:</span> Phase 1 Pricing - Limited Units</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H6:</span> 50-Year Leasehold Included</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H7:</span> Institutional-Grade Development</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H8:</span> Passive Income From Bali</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H9:</span> Pre-Construction Permits Secured</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H10:</span> ESA Architects and Top Contractor</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H11:</span> From $169,000 USD</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H12:</span> Hotel-Managed Investment Property</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H13:</span> Book a Free Strategy Call</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="font-weight:700;color:var(--t1);">H14:</span> 87 Units Remaining</div>
+        <div style="font-size:12px;color:var(--t2);padding:4px 0;"><span style="font-weight:700;color:var(--t1);">H15:</span> Fully Managed. Fully Passive.</div>
+      </div>
+    </div>
+    <div>
+      <h2>Descriptions - Ad Group 1 (4 required)</h2>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="finding teal">
+          <div style="font-size:10px;font-weight:700;color:var(--teal);margin-bottom:5px;">D1</div>
+          <p style="font-size:13px;margin:0;">107-unit complex in Canggu built by Indonesia's top contractor. 10% annual net ROI. 50-year leasehold. Phase 1 pricing live now.</p>
+        </div>
+        <div class="finding teal">
+          <div style="font-size:10px;font-weight:700;color:var(--teal);margin-bottom:5px;">D2</div>
+          <p style="font-size:13px;margin:0;">European property yields 3-4%. Bali investors earn 10% net per year. Element Residence built to institutional standards with all permits secured.</p>
+        </div>
+        <div class="finding teal">
+          <div style="font-size:10px;font-weight:700;color:var(--teal);margin-bottom:5px;">D3</div>
+          <p style="font-size:13px;margin:0;">Pre-construction permits. ESA Architects. Institutional contractor. This is Bali real estate built the right way. Download the brochure today.</p>
+        </div>
+        <div class="finding teal">
+          <div style="font-size:10px;font-weight:700;color:var(--teal);margin-bottom:5px;">D4</div>
+          <p style="font-size:13px;margin:0;">Element Residence Bali - the only apartment investment in Canggu with a 50-year leasehold, institutional contractor, and contractual ROI structure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 11 - RSA AG2 AG3 + NEGATIVES -->
+<section class="slide">
+  <span class="slide-num">11</span>
+  <span class="eyebrow blue">Google Ads - RSA Copy: Ad Groups 2 and 3 + Negative Keywords</span>
+  <h1 class="slide-title">Ad Group 2 (High Yield Overseas) · Ad Group 3 (Legal Research) · Negatives</h1>
+
+  <div class="g3">
+    <div>
+      <h2>AG2 - High Yield Overseas: Headline Bank</h2>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;flex-direction:column;gap:4px;">
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H1:</strong> High-Yield Property Investment</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H2:</strong> 10% Annual Net ROI in Bali</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H3:</strong> Beat European Property Returns</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H4:</strong> Overseas Property That Pays</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H5:</strong> Passive Real Estate Income</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H6:</strong> Invest Beyond Europe</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H7:</strong> Portfolio Diversification Asset</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H8:</strong> Managed Property Investment</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H9:</strong> Property Paying 10% Per Year</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H10:</strong> Low-Risk High-Yield Investment</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H11:</strong> Income Property from $169K</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H12:</strong> Compare European vs Bali Yields</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H13:</strong> Hotel-Managed Investment Flat</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H14:</strong> Alternative Investment Property</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;"><strong>H15:</strong> Book a Free Investment Call</div>
+      </div>
+    </div>
+
+    <div>
+      <h2>AG2 - Descriptions</h2>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+        <div class="finding blue">
+          <div style="font-size:10px;font-weight:700;color:var(--blue);margin-bottom:4px;">D1</div>
+          <p style="font-size:13px;margin:0;">European rental property yields 3-4%. Bali investors at Element Residence earn 10% net per year. Institutional-grade development, fully managed, all permits in place.</p>
+        </div>
+        <div class="finding blue">
+          <div style="font-size:10px;font-weight:700;color:var(--blue);margin-bottom:4px;">D2</div>
+          <p style="font-size:13px;margin:0;">Stop accepting sub-4% returns on European property. Element Residence delivers 10% annual net ROI from a hotel-managed complex in the heart of Canggu, Bali.</p>
+        </div>
+      </div>
+
+      <h2>AG3 - Legal Research Headlines</h2>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;flex-direction:column;gap:4px;">
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H1:</strong> Is Bali Property Safe?</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H2:</strong> Bali Leasehold: Full Guide</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H3:</strong> Can Foreigners Buy in Bali?</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;border-bottom:1px solid var(--border);"><strong>H4:</strong> Safe Bali Real Estate Investment</div>
+        <div style="font-size:12px;color:var(--t2);padding:3px 0;"><strong>H5:</strong> All Permits. Legal Structure. Facts.</div>
+      </div>
+    </div>
+
+    <div>
+      <h2>AG3 - Legal Research Descriptions</h2>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+        <div class="finding violet">
+          <p style="font-size:13px;margin:0;">Element Residence holds all pre-construction permits. 50-year leasehold. Institutional contractor. Built to international standards - download the full legal explainer.</p>
+        </div>
+        <div class="finding violet">
+          <p style="font-size:13px;margin:0;">Concerned about Bali property law? Element Residence is one of the only developments with all permits secured before construction began. Clear. Legal. Safe.</p>
+        </div>
+      </div>
+
+      <h2 style="color:var(--red);">Negative Keywords - Account Level</h2>
+      <div style="background:var(--bg2);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:14px 18px;">
+        <div style="line-height:2;">
+          <span class="kw bad">villa rental</span><span class="kw bad">holiday villa</span><span class="kw bad">bali holiday</span><span class="kw bad">bali flights</span><span class="kw bad">bali hotel</span><span class="kw bad">bali hotel booking</span><span class="kw bad">buy land bali</span><span class="kw bad">airbnb bali</span><span class="kw bad">bali tourism</span><span class="kw bad">bali visa</span><span class="kw bad">free property</span><span class="kw bad">cheap apartment</span><span class="kw bad">budget accommodation</span><span class="kw bad">bali surf lesson</span><span class="kw bad">bali yoga retreat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 12 - TRACKING -->
+<section class="slide">
+  <span class="slide-num">12</span>
+  <span class="eyebrow red">Tracking and Conversion Architecture</span>
+  <h1 class="slide-title">What Gets Tracked, How, and What We Optimise Toward</h1>
+
+  <div class="insight teal" style="margin-bottom:20px;">
+    <p><strong>Avashesh Status:</strong> Audit complete. Meta deduplication fix identified - remove CAPI Gateway and WP plugin, keep GTM web and server-side. Google Ads conversion actions to be configured via GTM. ETA: 1-2 days.</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%;">Conversion Event</th>
+        <th style="width:12%;">Platform</th>
+        <th style="width:9%;">Type</th>
+        <th style="width:9%;">Status</th>
+        <th style="width:12%;">Attributed Value</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Strategy Call Booked (Calendly)</strong></td>
+        <td>Meta and Google</td>
+        <td><strong>PRIMARY</strong></td>
+        <td><span class="badge teal">Active</span></td>
+        <td class="good">EUR 500</td>
+        <td>Thank you page event plus CAPI server-side. Primary optimisation target for both platforms. North star event.</td>
+      </tr>
+      <tr>
+        <td><strong>Brochure Downloaded</strong></td>
+        <td>Meta and Google</td>
+        <td><strong style="color:var(--amber);">SECONDARY</strong></td>
+        <td><span class="badge teal">Active</span></td>
+        <td class="warn">EUR 50</td>
+        <td>Key mid-funnel signal. Used for retargeting audience building. Secondary conversion goal - do not optimise primary spend toward this.</td>
+      </tr>
+      <tr>
+        <td><strong>Newsletter Signup</strong></td>
+        <td>Meta</td>
+        <td><strong style="color:var(--amber);">SECONDARY</strong></td>
+        <td><span class="badge teal">Active</span></td>
+        <td class="warn">EUR 10</td>
+        <td>Feeds MailChimp 10-email welcome sequence. Lower intent but builds retargeting pool and nurture pipeline.</td>
+      </tr>
+      <tr>
+        <td><strong>Offline Conversion - Sale Closed</strong></td>
+        <td>Meta</td>
+        <td><strong>OFFLINE</strong></td>
+        <td><span class="badge amber">To Build</span></td>
+        <td class="good">Full unit value</td>
+        <td>When Pipedrive marks a lead as won, upload email to Meta as offline conversion. Trains the algorithm on actual high-value buyers.</td>
+      </tr>
+      <tr>
+        <td><strong>Meta Lead Form Submission</strong></td>
+        <td>Meta</td>
+        <td><strong>PRIMARY</strong></td>
+        <td><span class="badge amber">To Build</span></td>
+        <td class="warn">EUR 200</td>
+        <td>For lead form ad test. Connect via Make.com to Pipedrive pipeline. Avashesh to configure in GTM alongside other events.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="g3" style="margin-top:20px;">
+    <div class="card">
+      <div class="metric-label">Meta Deduplication Fix</div>
+      <p style="font-size:13px;margin:0;">Remove: CAPI Gateway and WordPress Meta Plugin. Keep: GTM Web (browser) and GTM Server-side (CAPI). Result: clean deduplication and accurate lead counts.</p>
+    </div>
+    <div class="card">
+      <div class="metric-label">Google Ads Conversions (New)</div>
+      <p style="font-size:13px;margin:0;">Create via GTM: Call Booked (primary), Brochure Download (secondary), Newsletter Signup (secondary), Lead Form Submit (primary).</p>
+    </div>
+    <div class="card teal">
+      <div class="metric-label">Enhanced Conversions</div>
+      <p style="font-size:13px;margin:0;">Avashesh to configure Enhanced Conversions for Google Ads. Captures hashed email and phone data improving match quality and attribution accuracy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 13 - 30-DAY ROADMAP -->
+<section class="slide">
+  <span class="slide-num">13</span>
+  <span class="eyebrow teal">30-Day Launch Roadmap</span>
+  <h1 class="slide-title">Week-by-Week - Owners, Priorities, and Milestones</h1>
+
+  <div class="week-grid" style="grid-template-columns:1fr 1fr;grid-template-rows:auto auto;">
+    <div class="week-col">
+      <div class="week-label red">Week 1 - Feb 24 to Mar 2</div>
+      <h3 style="margin-bottom:14px;">Foundation and Launch Prep</h3>
+      <div class="action-list">
+        <div class="action-row"><div class="action-num red">1</div><div class="action-text">Avashesh: Complete Meta deduplication fix - remove CAPI Gateway and WP plugin.</div></div>
+        <div class="action-row"><div class="action-num red">2</div><div class="action-text">Avashesh: Configure Google Ads conversion events in GTM (Call Booked, Brochure, Lead).</div></div>
+        <div class="action-row"><div class="action-num red">3</div><div class="action-text">Charles: Build all campaign structures in draft - Meta C1, C2, C3 and Google A, B, C.</div></div>
+        <div class="action-row"><div class="action-num amber">4</div><div class="action-text">Charles: Upload all ad copy, headlines, and descriptions into every ad group.</div></div>
+        <div class="action-row"><div class="action-num amber">5</div><div class="action-text">Richard: Organise Drive folders - label all existing creative by type and purpose.</div></div>
+        <div class="action-row"><div class="action-num amber">6</div><div class="action-text">Richard: Film and send first weekly construction update. Phone quality is fine.</div></div>
+      </div>
+    </div>
+    <div class="week-col">
+      <div class="week-label amber">Week 2 - Mar 3 to Mar 9</div>
+      <h3 style="margin-bottom:14px;">Launch and Early Optimisation</h3>
+      <div class="action-list">
+        <div class="action-row"><div class="action-num red">1</div><div class="action-text">Charles: Launch Meta Campaign 2 (Cold Consideration) and Campaign 1 (Awareness).</div></div>
+        <div class="action-row"><div class="action-num red">2</div><div class="action-text">Charles: Launch Google Campaign A (Search - Buyer Intent).</div></div>
+        <div class="action-row"><div class="action-num amber">3</div><div class="action-text">Charles: Launch Meta Campaign 3 (Warm Retargeting) with existing repurposed assets.</div></div>
+        <div class="action-row"><div class="action-num amber">4</div><div class="action-text">Charles: Send Richard Loom - first 72-hour metrics review and observations.</div></div>
+        <div class="action-row"><div class="action-num teal">5</div><div class="action-text">Richard: Connect Make.com for Meta Lead Forms to Pipedrive pipeline automation.</div></div>
+        <div class="action-row"><div class="action-num teal">6</div><div class="action-text">Richard: Upload Pipedrive buyer list as customer match audience on Meta and Google.</div></div>
+      </div>
+    </div>
+    <div class="week-col" style="border-top:1px solid var(--border);">
+      <div class="week-label teal">Week 3 - Mar 10 to Mar 16</div>
+      <h3 style="margin-bottom:14px;">Scale What Is Working</h3>
+      <div class="action-list">
+        <div class="action-row"><div class="action-num amber">1</div><div class="action-text">Charles: Identify top 2 performing creatives - scale budget 20% on winners.</div></div>
+        <div class="action-row"><div class="action-num amber">2</div><div class="action-text">Charles: Kill underperforming ad sets - reallocate budget to Estonian and top geo.</div></div>
+        <div class="action-row"><div class="action-num teal">3</div><div class="action-text">Charles: Launch Google Campaign B (PMax) if Search has reached 15+ conversions.</div></div>
+        <div class="action-row"><div class="action-num amber">4</div><div class="action-text">Richard: Film and send Week 2 construction update video.</div></div>
+        <div class="action-row"><div class="action-num teal">5</div><div class="action-text">Charles: Submit CRO recommendations to Richard's dev team based on landing page audit.</div></div>
+      </div>
+    </div>
+    <div class="week-col" style="border-top:1px solid var(--border);">
+      <div class="week-label teal">Week 4 - Mar 17 to Mar 23</div>
+      <h3 style="margin-bottom:14px;">Optimise, Report, Plan Month 2</h3>
+      <div class="action-list">
+        <div class="action-row"><div class="action-num teal">1</div><div class="action-text">Charles: Full Month 1 performance report - CPL, CPCB, leads by geo, creative winners.</div></div>
+        <div class="action-row"><div class="action-num teal">2</div><div class="action-text">Charles and Richard: Strategy call to review results and confirm Month 2 budget allocation.</div></div>
+        <div class="action-row"><div class="action-num teal">3</div><div class="action-text">Charles: Build Google Campaign C (Remarketing) from accumulated audiences.</div></div>
+        <div class="action-row"><div class="action-num teal">4</div><div class="action-text">Charles: Configure offline conversion upload from Pipedrive won deals to Meta.</div></div>
+        <div class="action-row"><div class="action-num violet">5</div><div class="action-text">Richard: Test Clay.com Starter plan - extract 200 high-net-worth investor profiles.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 14 - KPIS -->
+<section class="slide">
+  <span class="slide-num">14</span>
+  <span class="eyebrow teal">KPIs and Success Metrics</span>
+  <h1 class="slide-title">What We Measure, What Good Looks Like, When We Scale</h1>
+
+  <div class="north-star">
+    <div class="north-star-label">North Star Metric</div>
+    <div class="north-star-metric">Cost Per Qualified Strategy Call Booked (CPCB) - Target: under EUR 200 by end of Month 1</div>
+    <div class="north-star-note">At a 15% call-to-sale close rate and $250K AOV, each booked call carries a potential revenue value of approximately $37,500. EUR 200 CPCB equals 187x ROAS at close.</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%;">Metric</th>
+        <th style="width:14%;">Meta Target</th>
+        <th style="width:16%;">Google Target</th>
+        <th>Escalate If</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>CPL (Cost Per Lead)</strong></td><td class="good">Under EUR 40</td><td class="good">Under EUR 60</td><td>CPL exceeds EUR 80 on either platform for 7+ consecutive days</td></tr>
+      <tr><td><strong>CTR - Feed Ads</strong></td><td class="good">Above 1.2%</td><td class="good">Above 3% (Search)</td><td>CTR under 0.6% after 1,000 impressions - swap creative immediately</td></tr>
+      <tr><td><strong>Video ThruPlay Rate</strong></td><td class="good">Above 40%</td><td>N/A</td><td>Under 25% after 2,000 impressions - swap hook, test new opening 3 seconds</td></tr>
+      <tr><td><strong>Landing Page CVR</strong></td><td class="good">Above 5% to action</td><td class="good">Above 5%</td><td>Under 2% - flag for immediate CRO priority fix with dev team</td></tr>
+      <tr><td><strong>Brochure Download Rate</strong></td><td class="good">15-25% of LPVs</td><td>N/A</td><td>Under 10% - review landing page CTA visibility and placement</td></tr>
+      <tr><td><strong>Calendly Click Rate</strong></td><td class="good">5-10% of engaged</td><td>N/A</td><td>Under 3% - review retargeting ad intensity and sequencing</td></tr>
+      <tr><td><strong>Strategy Call Show Rate</strong></td><td class="good">Above 60%</td><td class="good">Above 60%</td><td>Under 40% - review MailChimp reminder sequence timing and messaging</td></tr>
+      <tr><td><strong>CPCB (Cost per Call Booked)</strong></td><td class="good">Under EUR 200</td><td class="good">Under EUR 200</td><td>Above EUR 400 after 20+ calls - review targeting, offer framing, and funnel</td></tr>
+      <tr><td><strong>Norway vs UK CPL Gap</strong></td><td colspan="2">Monitor - Norway historically EUR 4 CPL, UK EUR 49</td><td>If Norway under EUR 15 CPL - shift more Tier 1 budget to NO immediately</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================================================ SLIDE 15 - BUDGET -->
+<section class="slide">
+  <span class="slide-num">15</span>
+  <span class="eyebrow gold">Budget Allocation - EUR 12,000 per Month</span>
+  <h1 class="slide-title">How We Split the Budget for Maximum Lead Generation Impact</h1>
+
+  <div class="g2">
+    <div>
+      <h2 style="color:var(--violet);">Meta Ads - EUR 6,000 per Month</h2>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div>
+              <div class="metric-label">Campaign 1 - Cold Awareness</div>
+              <p style="font-size:13px;margin:0;">Video Views and Reach · Lifestyle content · Builds retargeting pool</p>
+            </div>
+            <div style="text-align:right;padding-left:16px;">
+              <div class="metric-value" style="color:var(--teal);">EUR 1,200</div>
+              <div class="metric-sub">20%</div>
+            </div>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:20%;background:var(--teal);"></div></div>
+        </div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div>
+              <div class="metric-label">Campaign 2 - Cold Consideration</div>
+              <p style="font-size:13px;margin:0;">Conversions · Lead events · Investment-led creative · Estonian ad set</p>
+            </div>
+            <div style="text-align:right;padding-left:16px;">
+              <div class="metric-value" style="color:var(--teal);">EUR 3,000</div>
+              <div class="metric-sub">50%</div>
+            </div>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:50%;background:var(--teal);"></div></div>
+        </div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div>
+              <div class="metric-label">Campaign 3 - Warm Retargeting</div>
+              <p style="font-size:13px;margin:0;">Call Booked · Trust and urgency creative · Frequency capped at 3 per week</p>
+            </div>
+            <div style="text-align:right;padding-left:16px;">
+              <div class="metric-value" style="color:var(--teal);">EUR 1,800</div>
+              <div class="metric-sub">30%</div>
+            </div>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:30%;background:var(--teal);"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 style="color:var(--blue);">Google Ads - EUR 6,000 per Month</h2>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div>
+              <div class="metric-label">Campaign A - Buyer Intent Search</div>
+              <p style="font-size:13px;margin:0;">Launch first · Highest intent · Search Network only · Manual CPC to start</p>
+            </div>
+            <div style="text-align:right;padding-left:16px;">
+              <div class="metric-value" style="color:var(--blue);">EUR 3,000</div>
+              <div class="metric-sub">50%</div>
+            </div>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:50%;background:var(--blue);"></div></div>
+        </div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div>
+              <div class="metric-label">Campaign B - Performance Max</div>
+              <p style="font-size:13px;margin:0;">Add after 30+ Search conversions · Audience signals: confirmed buyers and intent</p>
+            </div>
+            <div style="text-align:right;padding-left:16px;">
+              <div class="metric-value" style="color:var(--blue);">EUR 1,800</div>
+              <div class="metric-sub">30%</div>
+            </div>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:30%;background:var(--blue);"></div></div>
+        </div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div>
+              <div class="metric-label">Campaign C - Remarketing</div>
+              <p style="font-size:13px;margin:0;">Launch Week 3 · Display and Search · Audiences built by then</p>
+            </div>
+            <div style="text-align:right;padding-left:16px;">
+              <div class="metric-value" style="color:var(--blue);">EUR 1,200</div>
+              <div class="metric-sub">20%</div>
+            </div>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:20%;background:var(--blue);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-top:24px;">
+    <div class="metric-label" style="margin-bottom:12px;">Unit Economics - What the Numbers Need to Produce</div>
+    <div style="display:flex;gap:0;overflow:hidden;border:1px solid var(--border);border-radius:8px;">
+      <div style="flex:1;text-align:center;border-right:1px solid var(--border);padding:10px 4px;"><div class="metric-value" style="font-size:20px;color:var(--teal);">87</div><div class="metric-sub">Units to sell</div></div>
+      <div style="flex:1;text-align:center;border-right:1px solid var(--border);padding:10px 4px;"><div class="metric-value" style="font-size:20px;color:var(--t1);">$250K</div><div class="metric-sub">Avg unit value</div></div>
+      <div style="flex:1;text-align:center;border-right:1px solid var(--border);padding:10px 4px;"><div class="metric-value" style="font-size:20px;color:var(--t1);">15%</div><div class="metric-sub">Close rate target</div></div>
+      <div style="flex:1;text-align:center;border-right:1px solid var(--border);padding:10px 4px;"><div class="metric-value" style="font-size:20px;color:var(--amber);">580</div><div class="metric-sub">Total calls needed</div></div>
+      <div style="flex:1;text-align:center;border-right:1px solid var(--border);padding:10px 4px;"><div class="metric-value" style="font-size:20px;color:var(--amber);">73</div><div class="metric-sub">Calls per month (8mo)</div></div>
+      <div style="flex:1;text-align:center;border-right:1px solid var(--border);padding:10px 4px;"><div class="metric-value" style="font-size:20px;color:var(--teal);">EUR 200</div><div class="metric-sub">CPCB target</div></div>
+      <div style="flex:1;text-align:center;border-right:1px solid var(--border);padding:10px 4px;"><div class="metric-value" style="font-size:20px;color:var(--teal);">60</div><div class="metric-sub">Calls/mo at EUR 12K</div></div>
+      <div style="flex:1;text-align:center;padding:10px 4px;"><div class="metric-value" style="font-size:20px;color:var(--teal);">187x</div><div class="metric-sub">ROAS at close</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 16 - NEXT STEPS -->
+<section class="slide" style="display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 40% 30%,rgba(0,217,165,0.06) 0%,transparent 55%),radial-gradient(ellipse at 75% 75%,rgba(139,92,246,0.04) 0%,transparent 45%);">
+  <span class="slide-num">16</span>
+  <span class="eyebrow gold">Next Steps to Launch</span>
+  <h1 class="slide-title">We are ready. Three actions stand between us and go-live.</h1>
+
+  <div style="max-width:780px;margin-top:8px;">
+    <div class="finding teal" style="margin-bottom:16px;padding:24px;">
+      <div style="display:flex;align-items:flex-start;gap:20px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:52px;font-weight:700;color:var(--teal);line-height:1;flex-shrink:0;width:60px;text-align:center;">01</div>
+        <div>
+          <h3>Avashesh completes the tracking fix</h3>
+          <p style="font-size:13px;margin:0;">Meta deduplication: remove CAPI Gateway and WP plugin, keep GTM. Google Ads conversion events via GTM. ETA 1-2 days. Charles to confirm before any campaign goes live.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding gold" style="margin-bottom:16px;padding:24px;">
+      <div style="display:flex;align-items:flex-start;gap:20px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:52px;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;width:60px;text-align:center;">02</div>
+        <div>
+          <h3>Richard reviews and approves this blueprint</h3>
+          <p style="font-size:13px;margin:0;">30-minute walkthrough of campaigns, copy, and budgets on tomorrow's call. Confirm any messaging changes. Once signed off, Charles uploads everything and campaigns go into review.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding violet" style="padding:24px;">
+      <div style="display:flex;align-items:flex-start;gap:20px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:52px;font-weight:700;color:var(--violet);line-height:1;flex-shrink:0;width:60px;text-align:center;">03</div>
+        <div>
+          <h3>Launch decision - Friday this week or Monday next week</h3>
+          <p style="font-size:13px;margin:0;">Monday preferred: clean week-start, full 7-day data cycle from Day 1. Friday viable if tracking is confirmed by Thursday EOD. Either way, we are launching this week.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:40px;font-size:12px;color:var(--t3);">Heath Media · charles@heathmedia.co.uk · Built for Element Residence Bali, February 2026</p>
+</section>
+
+</body>
+</html>
